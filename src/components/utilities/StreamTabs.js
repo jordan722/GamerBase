@@ -16,18 +16,18 @@ const StreamTabs = () => {
       >
         <TabPane tab="Twitch" key="1">
           <div>
-            <a href="http://google.com">
+            <a href="https://www.twitch.tv/nickeh30">
               <img className="stream-box" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
             </a>
-            <a href="http://google.com">
+            <a href="https://www.twitch.tv/nickeh30">
               <img className="stream-box-blue" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
             </a>
-              <a href="http://google.com">
+              <a href="https://www.twitch.tv/nickeh30">
             </a>
-            <a href="http://google.com">
+            <a href="https://www.twitch.tv/nickeh30">
               <img className="stream-box" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
             </a>
-            <a href="http://google.com">
+            <a href="https://www.twitch.tv/nickeh30">
               <img className="stream-box-blue" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
             </a>
           </div>
