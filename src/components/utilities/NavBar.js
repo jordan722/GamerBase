@@ -4,23 +4,17 @@ import "./NavBar.css";
 
 const NavBar = () => {
   return (
-    <ul>
-      <li className="left">
-        <Link className="logo" to="/">
-          Fake Twitch
-        </Link>
-      </li>
-      <li>
-        <Link className="item" to="/campuses">
-          Sign Up
-        </Link>
-      </li>
-      <li>
-        <Link className="item" to="/students">
-          Login
-        </Link>
-      </li>
-    </ul>
+    <div className="navbar">
+      <Link className="logo" to="/">
+        Fake Twitch
+      </Link>
+      <Link className="sign-up" to="/sign-up">
+        Sign Up
+      </Link>
+      <Link className="login" to="/log-in">
+        Log In
+      </Link>
+    </div>
   );
 };
 
