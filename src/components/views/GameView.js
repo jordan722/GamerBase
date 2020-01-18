@@ -1,4 +1,5 @@
 import React from "react";
+import TrailerModal from '../../components/utilities/TrailerModal';
 import "./GameView.css";
 
 const GameView = () => {
@@ -14,9 +15,10 @@ const GameView = () => {
         <div style={{float:'left', marginLeft:'100px', marginTop: '80px', textAlign:'left',}}>
           <h2>Rating: 4.1/5</h2>
           <button className="steam-button"> Buy on Steam </button>
+          <TrailerModal />
         </div>
       </div>
-      <h1> Twitch Streams </h1>
+      <h1 style={{color:'white'}}> Twitch Streams </h1>
       <div>
         <img className="stream-box" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
         <img className="stream-box-blue" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
