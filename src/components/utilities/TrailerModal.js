@@ -40,6 +40,7 @@ class TrailerModal extends React.Component {
             backgroundColor: "black",
             padding: "0px",
             margin: "0px",
+            color:'white'
           }}
           centered={true}
           footer={null}
