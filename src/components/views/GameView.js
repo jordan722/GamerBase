@@ -11,7 +11,7 @@ const GameView = () => {
         <div style={{float:'left', marginLeft:'40px', textAlign:'left', color:'white', width:'30%'}}>
           <h1>Fortnite</h1>
           <h2> 74.8K Viewers . 51.7M Followers </h2>
-          <p> Fortnite is a sandbox-survival third-person shooter from the studio behind the Unreal Tournament and Gears of War series. </p>
+          <p style={{color:'white', fontSize:'14px', marginLeft:0}}> Fortnite is a sandbox-survival third-person shooter from the studio behind the Unreal Tournament and Gears of War series. </p>
         </div>
         <div style={{float:'left', marginLeft:'100px', marginTop: '80px', textAlign:'left', width:'15%'}}>
           <h2>Rating: 4.1/5</h2>
