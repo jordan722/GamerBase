@@ -43,7 +43,7 @@
 
 .stream-box{
   height:200px;
-  margin: 25px;
+  margin: 10px;
   transition: all 0.3s ease-out;
 }
 
@@ -53,12 +53,12 @@
               -3px 3px 0px red,
               -4px 4px 0px red,
               -5px 5px 0px red;
-  transform: translate(5px, -5px)
+  transform: translate(5px, -5px);
 }
 
 .stream-box-blue{
   height:200px;
-  margin: 25px;
+  margin: 10px;
   transition: all 0.3s ease-out;
 }
 
@@ -68,7 +68,7 @@
               -3px 3px 0px blue,
               -4px 4px 0px blue,
               -5px 5px 0px blue;
-  transform: translate(5px, -5px)
+  transform: translate(5px, -5px);
 }
 
 a{

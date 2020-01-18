@@ -1,5 +1,6 @@
 import React from "react";
 import TrailerModal from '../../components/utilities/TrailerModal';
+import StreamTabs from '../../components/utilities/StreamTabs';
 import "./GameView.css";
 
 const GameView = () => {
@@ -18,13 +19,8 @@ const GameView = () => {
           <TrailerModal />
         </div>
       </div>
-      <h1> Twitch Streams </h1>
-      <div>
-        <img className="stream-box" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
-        <img className="stream-box-blue" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
-        <img className="stream-box" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
-        <img className="stream-box-blue" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
-      </div>
+      <h1> Active Streams </h1>
+      <StreamTabs />
     </div>
   );
 };
