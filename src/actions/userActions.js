@@ -1,5 +1,5 @@
 import {
-  GET_USER,
+  GET_USERS,
   ADD_USER,
   EDIT_USER,
   REMOVE_USER,
@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 
 // Action creator
-const getUser = users => {
+const getUsers = users => {
   return {
     type: GET_USER,
     payload: users
