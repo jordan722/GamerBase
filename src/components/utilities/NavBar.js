@@ -8,6 +8,9 @@ const NavBar = () => {
       <Link className="logo" to="/">
         Fake Twitch
       </Link>
+      <Link className="sign-up" to="/games" style={{float:'left'}}>
+        Game
+      </Link>
       <Link className="sign-up" to="/sign-up">
         Sign Up
       </Link>

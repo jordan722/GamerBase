@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
-import { Home, NavBar } from "./components";
+import { Home, NavBar, GameView } from "./components";
 
 class App extends Component {
   render() {
@@ -12,6 +12,7 @@ class App extends Component {
           <NavBar />
           <div className="app-h">
             <Route exact path="/" render={() => <Home />} />
+            <Route exact path="/games" render={() => <GameView />} />
           </div>
         </Router>
       </div>
