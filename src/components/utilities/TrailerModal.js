@@ -39,8 +39,9 @@ class TrailerModal extends React.Component {
           bodyStyle={{
             backgroundColor: "black",
             padding: "0px",
-            margin: "0px"
+            margin: "0px",
           }}
+          centered={true}
           footer={null}
         >
           <iframe

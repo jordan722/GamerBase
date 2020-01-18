@@ -13,4 +13,9 @@
 
 .trailer:hover{
   background-color:#464649;
+  cursor: pointer;
+}
+
+.trailer:focus{
+  outline: none;
 }
