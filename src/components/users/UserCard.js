@@ -6,9 +6,6 @@ const UserCard = props => {
   const user = props.user;
   return (
     <div className="user-card">
-      <div className="user-picture-container">
-        <img alt="user" src={user.imageUrl} className="user-picture"></img>
-      </div>
       <div className="user-info">
         <Link to={"/users/" + user.id}>{`Name: ${user.name}`}</Link>
         <p>{`User id: ${user.id}`}</p>

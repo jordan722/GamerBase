@@ -4,7 +4,7 @@ import "./user.css";
 import LinkButton from "../utilities/LinkButton";
 
 const AddUserView = props => {
-  const { name, email, location, imageUrl, handleSubmit, handleChange } = props;
+  const { name, email, location, handleSubmit, handleChange } = props;
 
   return (
     <>
@@ -48,17 +48,6 @@ const AddUserView = props => {
               name="location"
               type="text"
               value={location}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            Image URL:
-            <input
-              className="box"
-              name="imageUrl"
-              type="text"
-              value={imageUrl}
               onChange={handleChange}
               required
             />

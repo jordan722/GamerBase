@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import AddUserView from "./AddCampusView";
+import AddUserView from "./AddUserView";
 
 import { addUserThunk } from "../../actions";
 
@@ -12,9 +12,7 @@ class AddUser extends Component {
     this.state = {
       name: "",
       email: "",
-      location: "",
-      imageUrl:
-        "https://s29068.pcdn.co/wp-content/uploads/hunter-new-york-city-street-view.jpg"
+      location: ""
     };
   }
 
@@ -26,13 +24,12 @@ class AddUser extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let campus = {
+    let user = {
       name: this.state.name,
       email: this.state.email,
-      location: this.state.location,
-      imageUrl: this.state.imageUrl
+      location: this.state.location
     };
-    this.props.addCampus(campus);
+    this.props.addUser(user);
     this.props.history.push(".");
   };
 
@@ -43,7 +40,6 @@ class AddUser extends Component {
           name={this.state.name}
           email={this.state.email}
           location={this.state.location}
-          imageUrl={this.state.imageUrl}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />

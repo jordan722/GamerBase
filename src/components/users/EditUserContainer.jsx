@@ -12,9 +12,7 @@ class EditUser extends Component {
     this.state = {
       name: "",
       email: "",
-      location: "",
-      imageUrl:
-        "https://s3.amazonaws.com/freestock-prod/450/freestock_565622158.jpg"
+      location: ""
     };
   }
 
@@ -24,8 +22,7 @@ class EditUser extends Component {
       this.setState({
         name: this.props.currUser.name,
         email: this.props.currUser.email,
-        location: this.props.currUser.location,
-        imageUrl: this.props.currUser.imageUrl
+        location: this.props.currUser.location
       });
     }
   }
@@ -38,11 +35,10 @@ class EditUser extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let campus = {
+    let user = {
       name: this.state.name,
       email: this.state.email,
-      location: this.state.location,
-      imageUrl: this.state.imageUrl
+      location: this.state.location
     };
     console.log(this.props);
     this.props.editUser(user, this.props.currUser.id);
@@ -60,7 +56,6 @@ class EditUser extends Component {
           name={this.state.name}
           email={this.state.email}
           location={this.state.location}
-          imageUrl={this.state.imageUrl}
           id={this.props.currUser.id}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
@@ -72,17 +67,16 @@ class EditUser extends Component {
 
 const mapState = state => {
   return {
-    campusId: parseInt(window.location.pathname.split("/")[2]),
-    currCampus: state.campus.currCampus
+    userId: parseInt(window.location.pathname.split("/")[2]),
+    currUser: state.user.currUser
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    editCampus: (campus, campusId) =>
-      dispatch(editCampusThunk(campus, campusId)),
-    getCampus: id => dispatch(getCampusThunk(id))
+    editUser: (user, userId) => dispatch(editUserThunk(user, userId)),
+    getUser: id => dispatch(getUserThunk(id))
   };
 };
 
-export default connect(mapState, mapDispatch)(withRouter(EditCampus));
+export default connect(mapState, mapDispatch)(withRouter(EditUser));

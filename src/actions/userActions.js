@@ -34,7 +34,7 @@ const editUser = (user, userId) => {
   return {
     type: EDIT_USER,
     payload: user,
-    studentId: userId
+    userId: userId
   };
 };
 
@@ -74,8 +74,8 @@ export const addUserThunk = user => async dispatch => {
   try {
     // checks if student has campusId, if not passes student object without campusId key
     let apiUser = user;
-    if (!user.campusId) {
-      apiUser = objectWithoutKey(user, "campusId");
+    if (!user.userId) {
+      apiUser = objectWithoutKey(user, "userId");
     }
 
     await axios.post("/api/users", apiUser);

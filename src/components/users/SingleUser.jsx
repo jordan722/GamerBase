@@ -17,17 +17,16 @@ class SingleUser extends Component {
     let userInfo = null;
     if (this.props.currUser) {
       const user = this.props.currUser;
-      UserInfo = (
+      userInfo = (
         <div>
           <div>
-            <img src={user.imageUrl} width="400" alt="" />
             <h3>{user.name}</h3>
             Email: {user.email} <br />
             user: {user.id}
           </div>
           <Link
             className="button"
-            to="/useres"
+            to="/users"
             onClick={() => this.props.removeuser(user.id)}
           >
             Remove user

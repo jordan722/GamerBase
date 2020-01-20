@@ -45,5 +45,4 @@ const mapDispatchToProps = dispatch => ({
   getAllUsers: () => dispatch(getUsersThunk())
 });
 
-// export default AllCampuses;
 export default connect(mapStateToProps, mapDispatchToProps)(AllUsers);

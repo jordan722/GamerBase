@@ -3,15 +3,7 @@ import React from "react";
 import LinkButton from "../utilities/LinkButton";
 
 const EditUserView = props => {
-  const {
-    name,
-    email,
-    location,
-    imageUrl,
-    id,
-    handleSubmit,
-    handleChange
-  } = props;
+  const { name, email, location, id, handleSubmit, handleChange } = props;
 
   return (
     <>
@@ -57,17 +49,6 @@ const EditUserView = props => {
                 name="location"
                 type="text"
                 value={location}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              Image URL:
-              <input
-                className="box"
-                name="imageUrl"
-                type="text"
-                value={imageUrl}
                 onChange={handleChange}
                 required
               />
