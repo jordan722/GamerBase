@@ -11,7 +11,7 @@ import axios from "axios";
 // Action creator
 const getUsers = users => {
   return {
-    type: GET_USER,
+    type: GET_USERS,
     payload: users
   };
 };
