@@ -20,6 +20,18 @@ class App extends Component {
           <NavBar />
           <div className="app-h">
             <Route exact path="/" render={() => <Home />} />
+            <Route exact path="/users" render={() => <AllUsers />} />
+            <Route
+              exact
+              path="/users/:userId"
+              render={props => <SingleUser {...props} />}
+            />
+            <Route exact path="/users/add-user" render={() => <AddUser />} />
+            <Route
+              exact
+              path="/users/:userid/edit-user"
+              render={props => <EditUser {...props} />}
+            />
             <Route exact path="/games" render={() => <GameView />} />
           </div>
         </Router>
