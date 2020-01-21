@@ -4,7 +4,7 @@ import "./user.css";
 import LinkButton from "../utilities/LinkButton";
 
 const AddUserView = props => {
-  const { name, email, location, handleSubmit, handleChange } = props;
+  const { name, email, location, bio, handleSubmit, handleChange } = props;
 
   return (
     <>
@@ -15,12 +15,13 @@ const AddUserView = props => {
         <form
           style={{
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            alignItems: "center"
           }}
           onSubmit={handleSubmit}
         >
           <div>
-            <p class="input_field">Name:</p>
+            <p className="input_field">Name:</p>
             <input
               className="box"
               name="name"
@@ -51,6 +52,18 @@ const AddUserView = props => {
               onChange={handleChange}
               required
             />
+          </div>
+          <p class="input_field">Bio:</p>
+          <div>
+            <textarea
+              className="box"
+              name="bio"
+              cols="40"
+              rows="5"
+              value={bio}
+              onChange={handleChange}
+              required
+            ></textarea>
           </div>
           <div>
             <input className="box" type="submit" value="Submit" id="submit" />

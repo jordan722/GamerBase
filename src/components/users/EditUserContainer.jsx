@@ -12,7 +12,8 @@ class EditUser extends Component {
     this.state = {
       name: "",
       email: "",
-      location: ""
+      location: "",
+      bio: ""
     };
   }
 
@@ -22,7 +23,8 @@ class EditUser extends Component {
       this.setState({
         name: this.props.currUser.name,
         email: this.props.currUser.email,
-        location: this.props.currUser.location
+        location: this.props.currUser.location,
+        bio: this.props.currUser.bio
       });
     }
   }
@@ -38,7 +40,8 @@ class EditUser extends Component {
     let user = {
       name: this.state.name,
       email: this.state.email,
-      location: this.state.location
+      location: this.state.location,
+      bio: this.state.bio
     };
     console.log(this.props);
     this.props.editUser(user, this.props.currUser.id);
@@ -56,6 +59,7 @@ class EditUser extends Component {
           name={this.state.name}
           email={this.state.email}
           location={this.state.location}
+          bio={this.state.bio}
           id={this.props.currUser.id}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}

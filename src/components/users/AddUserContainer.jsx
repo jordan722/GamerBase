@@ -12,7 +12,8 @@ class AddUser extends Component {
     this.state = {
       name: "",
       email: "",
-      location: ""
+      location: "",
+      bio: ""
     };
   }
 
@@ -27,7 +28,8 @@ class AddUser extends Component {
     let user = {
       name: this.state.name,
       email: this.state.email,
-      location: this.state.location
+      location: this.state.location,
+      bio: this.state.bio
     };
     this.props.addUser(user);
     this.props.history.push(".");
@@ -40,6 +42,7 @@ class AddUser extends Component {
           name={this.state.name}
           email={this.state.email}
           location={this.state.location}
+          bio={this.state.bio}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />
