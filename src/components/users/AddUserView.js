@@ -20,7 +20,7 @@ const AddUserView = props => {
           onSubmit={handleSubmit}
         >
           <div>
-            Name:
+            <p class="input_field">Name:</p>
             <input
               className="box"
               name="name"
@@ -31,7 +31,7 @@ const AddUserView = props => {
             />
           </div>
           <div>
-            Email:
+            <p class="input_field">Email:</p>
             <input
               className="box"
               name="email"
@@ -42,7 +42,7 @@ const AddUserView = props => {
             />
           </div>
           <div>
-            Location:
+            <p class="input_field">Location:</p>
             <input
               className="box"
               name="location"

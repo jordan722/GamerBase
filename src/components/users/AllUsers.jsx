@@ -29,9 +29,6 @@ class AllUsers extends Component {
       <div className="all-users-container">
         <h1>All Users</h1>
         <div className="user-card-container">{userCards}</div>
-        <LinkButton className="button" to="/users/add-user">
-          Add User
-        </LinkButton>
       </div>
     );
   }

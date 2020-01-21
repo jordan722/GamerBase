@@ -27,7 +27,7 @@ class SingleUser extends Component {
           <Link
             className="button"
             to="/users"
-            onClick={() => this.props.removeuser(user.id)}
+            onClick={() => this.props.removeUser(user.id)}
           >
             Remove user
           </Link>
