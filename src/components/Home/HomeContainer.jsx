@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./Home.css";
 import HomeView from "./HomeView";
+
+import { getHomeGamesThunk } from "../../actions";
 
 const list = [
   {
@@ -76,8 +79,9 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
+    props.getHomeGames();
     this.menu = null;
-    this.menuItems = Menu(list.slice(0, list.length), this.state.selected);
+    this.menuItems = Menu(list, this.state.selected);
   }
 
   onUpdate = ({ translate }) => {
@@ -99,6 +103,9 @@ class Home extends Component {
       <div className="App">
         <HomeView
           state={this.state}
+          trending={this.props.trending}
+          toprated={this.props.toprated}
+          upcoming={this.props.upcoming}
           menu={this.menuItems}
           onUpdate={this.onUpdate}
           onSelect={this.onSelect}
@@ -111,4 +118,14 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  trending: state.game.trending,
+  toprated: state.game.toprated,
+  upcoming: state.game.upcoming,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getHomeGames: () => dispatch(getHomeGamesThunk())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
