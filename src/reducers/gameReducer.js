@@ -13,9 +13,9 @@ export default(state = initialState, action) => {
     case GET_HOME_GAMES:
       return {
         ...state,
-        trending: action.payload.trending,
-        toprated: action.payload.toprated,
-        upcoming: action.payload.upcoming,
+        trending: action.payload.trending.data,
+        toprated: action.payload.toprated.data,
+        upcoming: action.payload.upcoming.data,
       }
     default:
       return state;
