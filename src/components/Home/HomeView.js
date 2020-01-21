@@ -7,8 +7,8 @@ const HomeView = props => {
     state,
     menu,
     onUpdate,
-    onSelect,
-    setSelected,
+    //onSelect,
+    //setSelected,
     ArrowLeft,
     ArrowRight
   } = props;
@@ -26,8 +26,8 @@ const HomeView = props => {
           hideSingleArrow={state.hideSingleArrow}
           transition={+state.transition}
           onUpdate={onUpdate}
-          onSelect={onSelect}
-          setSelected={setSelected}
+          onSelect={state.trendingOnSelect}
+          setSelected={state.trendingSetSelected}
           selected={state.selected}
           translate={state.trendingTranslate}
           alignCenter={state.alignCenter}
@@ -46,8 +46,8 @@ const HomeView = props => {
           hideSingleArrow={state.hideSingleArrow}
           transition={+state.transition}
           onUpdate={onUpdate}
-          onSelect={onSelect}
-          setSelected={setSelected}
+          onSelect={state.top100OnSelect}
+          setSelected={state.top100SetSelected}
           selected={state.selected}
           translate={state.top100translate}
           alignCenter={state.alignCenter}
@@ -66,8 +66,8 @@ const HomeView = props => {
           hideSingleArrow={state.hideSingleArrow}
           transition={+state.transition}
           onUpdate={onUpdate}
-          onSelect={onSelect}
-          setSelected={setSelected}
+          onSelect={state.upcomingOnSelect}
+          setSelected={state.upcomingSetSelected}
           selected={state.selected}
           translate={state.upcomingTranslate}
           alignCenter={state.alignCenter}

@@ -64,11 +64,17 @@ class Home extends Component {
   state = {
     alignCenter: true,
     clickWhenDrag: false,
-    dragging: true,
+    dragging: false,
     hideArrows: true,
     hideSingleArrow: true,
     itemsCount: list.length,
     selected: "item1",
+    upcomingOnSelect: "",
+    upcomingSetSelected: "",
+    top100OnSelect: "",
+    top100SetSelected: "",
+    trendingOnSelect: "",
+    trendingSetSelected: "",
     translate: 0,
     upcomingTranslate: 0,
     top100Translate: 0,
@@ -121,11 +127,11 @@ class Home extends Component {
 const mapStateToProps = state => ({
   trending: state.game.trending,
   toprated: state.game.toprated,
-  upcoming: state.game.upcoming,
+  upcoming: state.game.upcoming
 });
 
 const mapDispatchToProps = dispatch => ({
   getHomeGames: () => dispatch(getHomeGamesThunk())
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
