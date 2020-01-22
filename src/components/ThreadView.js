@@ -1,14 +1,15 @@
 import React from 'react'
+import './Forum.css'
 
 const ThreadView = (props) => {
-    const { threadInfo } = props;
+    const { reply } = props;
 
     return(
-        <div>
-            <p>{threadInfo.user}</p>
-            <p>{threadInfo.postTime}</p>
-            <p>{threadInfo.postContent}</p>
-            <p>{threadInfo.isEdited}</p>
+        <div id="reply">
+            <p className="reply-box">{reply.user}</p>
+            <p className="reply-box">{reply.postTime}</p>
+            <p className="reply-box">{reply.postContent}</p>
+            <p className="reply-box">{reply.isEdited}</p>
         </div>
     )
 }

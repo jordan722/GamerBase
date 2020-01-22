@@ -40,6 +40,14 @@
     min-width: 120px;
 }
 
-#content p{
-    font-size: small;
+#reply {
+    display:flex;
+    flex-direction: row;
+}
+
+.reply-box{
+    display: flex;
+    align-items: center;
+        
+    font-size: 16px;
 }
