@@ -10,8 +10,7 @@ const GameView = (props) => {
   return (
     <div className="main-container">
       <div className="game-header" style={{backgroundImage:`linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url(${props.game.background_image})`}}>
-        <div className="game-logo" style={{backgroundImage:`url(${props.game.background_image})`}}>
-        </div>
+        {props.game.twitch && <div className="game-logo" style={{backgroundImage:`url(${props.game.twitch.box_art_url.replace('{height}',192).replace('{width}',144)})`}}/>}
         <div style={{float:'left', marginTop:'-40px', marginLeft:'40px', textAlign:'left', color:'white', width:'30%'}}>
           <h1 style={{color:'white'}}>{props.game.name}</h1>
           <h2 style={{color:'white'}}> Released {props.game.released} </h2>
@@ -25,7 +24,7 @@ const GameView = (props) => {
         </div>
       </div>
       <h1> Active Streams </h1>
-      <StreamTabs />
+      <StreamTabs twitch={props.game.twitch}/>
     </div>
   );
 };

@@ -17,7 +17,6 @@ class Game extends Component {
     if(this.props.currGame.twitch){
       this.props.getMixer(this.props.currGame.twitch.name);
       this.props.getYoutube(this.props.currGame.twitch.name);
-      console.log(this.props.getYoutube);
     }
   }
 
