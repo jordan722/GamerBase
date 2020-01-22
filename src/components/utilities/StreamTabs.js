@@ -4,7 +4,7 @@ import { Tabs } from "antd";
 
 const { TabPane } = Tabs;
 
-const StreamTabs = () => {
+const StreamTabs = (props) => {
   return(
     <div style={{width:'85%', margin:'0 auto', height:'600px', overflowY:'auto'}}>
       <Tabs
@@ -13,8 +13,14 @@ const StreamTabs = () => {
         style={{ backgroundColor: "#18181b", borderRadius:'10px', boxShadow: '0 0 10px black' }}
         tabBarGutter={100}
       >
+        {props.twitch &&
         <TabPane tab="Twitch" key="1">
           <div>
+            {props.twitch.streams.map((stream,i) => (
+              <a href={stream.external_link}>
+                <img className="stream-box" src={stream.thumbnail_url.replace('{height}',248).replace('{width}',440)}/>
+              </a>
+            ))}
             <a href="https://www.twitch.tv/nickeh30">
               <img className="stream-box" src="https://i.ytimg.com/vi/Kavmf3RYEjI/maxresdefault.jpg"/>
             </a>
@@ -31,6 +37,7 @@ const StreamTabs = () => {
             </a>
           </div>
         </TabPane>
+        }
         <TabPane tab="Mixer" key="2">
           <div>
             <img className="stream-box" src="https://i.ytimg.com/vi/Tuxg1EY-lk4/maxresdefault.jpg"/>
