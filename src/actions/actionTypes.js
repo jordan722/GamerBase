@@ -11,3 +11,4 @@ export const GET_HOME_GAMES = "GET_HOME_GAMES";
 
 export const GET_THREAD = "GET_THREAD";
 export const GET_THREADS = "GET_THREADS";
+export const GET_THREAD_INFO = "GET_THREAD_INFO"

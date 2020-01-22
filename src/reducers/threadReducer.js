@@ -1,11 +1,13 @@
 import {
     GET_THREAD,
-    GET_THREADS
+    GET_THREADS,
+    GET_THREAD_INFO
 } from '../actions/actionTypes'
 
 const initialState = {
     allThreads: [],
-    currThread: null
+    currThread: null,
+    threadInfo: null
 }
 
 export default (state = initialState, action) => {
@@ -18,7 +20,12 @@ export default (state = initialState, action) => {
         case GET_THREADS:
             return{
                 ...state,
-                allThreads: action.payload,
+                allThreads: action.payload
+            }
+        case GET_THREAD_INFO:
+            return{
+                ...state,
+                threadInfo: action.payload
             }
         default:
             return state;

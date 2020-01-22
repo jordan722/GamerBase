@@ -13,22 +13,24 @@ class ForumContainer extends Component{
     render(){
         //assumes all threads is an array
         const { allThreads } = this.props;
+        let forumDisplay = undefined;
         let threadBoxes = undefined;
 
         //outputs information if no threads exist
         if(allThreads !== undefined && allThreads.length === 0){
-            threadBoxes = <div> No threads currently exist </div>
+            forumDisplay = <div> No threads currently exist </div>
         }else if(allThreads){
-            console.log(allThreads);
+            //console.log(allThreads);
             threadBoxes = allThreads.map(singleThread => {
-                console.log(singleThread)
+                //console.log(singleThread)
                 return <ThreadBox key={singleThread.id} thread={singleThread} />
                 }
             )
+            forumDisplay = <ForumView threadBoxes={threadBoxes}/>
         }
 
         return(<div>
-                <ForumView threadBoxes={threadBoxes}/>
+                {forumDisplay}
             </div>
         )
     }

@@ -1,11 +1,14 @@
 import React from 'react'
 
 const ThreadView = (props) => {
-    //const { thread } = props;
+    const { threadInfo } = props;
 
     return(
         <div>
-            <h1> Thread View </h1>
+            <p>{threadInfo.user}</p>
+            <p>{threadInfo.postTime}</p>
+            <p>{threadInfo.postContent}</p>
+            <p>{threadInfo.isEdited}</p>
         </div>
     )
 }
