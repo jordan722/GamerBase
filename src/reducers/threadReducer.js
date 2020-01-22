@@ -1,14 +1,13 @@
 import {
     GET_THREAD,
     GET_THREADS,
-    GET_THREAD_INFO,
-    ADD_THREAD
+    ADD_THREAD,
+    ADD_THREAD_REPLY
 } from '../actions/actionTypes'
 
 const initialState = {
     allThreads: [],
-    currThread: null,
-    threadInfo: null
+    currThread: null
 }
 
 export default (state = initialState, action) => {
@@ -23,16 +22,15 @@ export default (state = initialState, action) => {
                 ...state,
                 allThreads: action.payload
             }
-        case GET_THREAD_INFO:
-            return{
-                ...state,
-                threadInfo: action.payload
-            }
         case ADD_THREAD:
             return {
                 ...state,
                 allThreads: [...state.allThreads, action.payload]
             };
+        case ADD_THREAD_REPLY:
+            return{
+                ...state
+            }
         default:
             return state;
     }
