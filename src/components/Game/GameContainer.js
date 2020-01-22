@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import './Game.css';
 import GameView from './GameView';
 
-import { getGameThunk } from "../../actions";
+import { getGameThunk, getTwitchThunk, getMixerThunk, getYoutubeThunk } from "../../actions";
 
 class Game extends Component {
 
@@ -11,15 +11,20 @@ class Game extends Component {
     super(props)
   }
 
-  componentDidMount(){
-    this.props.getGame(this.props.gameId)
+  async componentDidMount(){
+    await this.props.getGame(this.props.gameId);
+    await this.props.getTwitch(this.props.currGame.name);
+    if(this.props.currGame.twitch){
+      this.props.getMixer(this.props.currGame.twitch.name);
+      this.props.getYoutube(this.props.currGame.twitch.name);
+      console.log(this.props.getYoutube);
+    }
   }
 
   render(){
     if(this.props.currGame.length === 0){
       return (<div> Page Loading </div>);
     } else{
-      console.log(this.props.currGame)
       return (
         <GameView
         game={this.props.currGame}
@@ -36,6 +41,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getGame: id => dispatch(getGameThunk(id)),
+  getTwitch: name => dispatch(getTwitchThunk(name)),
+  getMixer: name => dispatch(getMixerThunk(name)),
+  getYoutube: name => dispatch(getYoutubeThunk(name)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

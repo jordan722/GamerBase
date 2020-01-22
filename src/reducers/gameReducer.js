@@ -1,6 +1,9 @@
 import {
   GET_HOME_GAMES,
   GET_GAME,
+  GET_TWITCH,
+  GET_MIXER,
+  GET_YOUTUBE,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -23,6 +26,30 @@ export default(state = initialState, action) => {
       return{
         ...state,
         currGame: action.payload,
+      }
+    case GET_TWITCH:
+      return{
+        ...state,
+        currGame:{
+          ...state.currGame,
+          twitch: action.payload
+        }
+      }
+    case GET_MIXER:
+      return{
+        ...state,
+        currGame:{
+          ...state.currGame,
+          mixer: action.payload,
+        }
+      }
+    case GET_YOUTUBE:
+      return{
+        ...state,
+        currGame:{
+          ...state.currGame,
+          youtube: action.payload
+        }
       }
     default:
       return state;
