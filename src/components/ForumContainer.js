@@ -18,6 +18,17 @@ class ForumContainer extends Component {
     };
   }
 
+  //Dummy data
+  componentDidMount() {
+    this.props.getAllThreads();
+    this.setState({
+      last_updated: "Just ",
+      post_name: "Submit",
+      reply_count: this.state.reply_count,
+      creater: this.state.creater
+    });
+  }
+
   handleThread = () => {
     this.setState({
       toggle: !this.state.toggle
@@ -47,7 +58,7 @@ class ForumContainer extends Component {
       return null;
     } else {
       return (
-        <div>
+        <div id="TEXT">
           <textarea placeholder="Enter question here!" id="textarea"></textarea>
           <button onClick={this.handleSubmit} id="submit_thread">
             Submit
@@ -56,10 +67,6 @@ class ForumContainer extends Component {
       );
     }
   };
-
-  componentDidMount() {
-    this.props.getAllThreads();
-  }
 
   render() {
     //assumes all threads is an array
