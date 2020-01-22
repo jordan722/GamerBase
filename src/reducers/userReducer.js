@@ -2,8 +2,7 @@ import {
   GET_USERS,
   ADD_USER,
   EDIT_USER,
-  REMOVE_USER,
-  GET_USER
+  REMOVE_USER
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -31,11 +30,6 @@ export default (state = initialState, action) => {
           }
           return item;
         }),
-        currUser: action.payload
-      };
-    case GET_USER:
-      return {
-        ...state,
         currUser: action.payload
       };
     case REMOVE_USER:

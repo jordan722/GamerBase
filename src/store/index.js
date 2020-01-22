@@ -15,3 +15,4 @@ const middleware = composeWithDevTools(
 const store = createStore(rootReducer, initialState, middleware);
 
 export default store;
+	

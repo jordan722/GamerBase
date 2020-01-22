@@ -9,7 +9,9 @@ import {
   AllUsers,
   AddUser,
   EditUser,
-  SingleUser
+  SingleUser,
+  Forum,
+  Thread
 } from "./components";
 
 class App extends Component {
@@ -33,6 +35,8 @@ class App extends Component {
               render={props => <EditUser {...props} />}
             />
             <Route exact path="/games" render={() => <GameView />} />
+            <Route exact path="/forums" render={() => <Forum />} />
+            <Route exact path="/forums/:threadId" render={(props) => <Thread {...props}/>} />
           </div>
         </Router>
       </div>
