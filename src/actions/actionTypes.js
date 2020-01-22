@@ -8,3 +8,4 @@ export const GET_USER = "GET_USER";
 
 // Game actions
 export const GET_HOME_GAMES = "GET_HOME_GAMES";
+export const GET_GAME = "GET_GAME";

@@ -4,6 +4,10 @@ import { Modal } from "antd";
 import './TrailerModal.css'
 
 class TrailerModal extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
   state = { visible: false };
 
   showModal = () => {
@@ -30,7 +34,7 @@ class TrailerModal extends React.Component {
     return (
       <div>
         <button className="trailer" onClick={this.showModal}>
-          See Trailer
+          See Clip
         </button>
         <Modal
           visible={this.state.visible}
@@ -48,7 +52,7 @@ class TrailerModal extends React.Component {
           <iframe
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/3KgmY5NrEzU"
+            src={this.props.video}
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen

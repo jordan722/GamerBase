@@ -5,7 +5,7 @@ import "./App.css";
 import {
   Home,
   NavBar,
-  GameView,
+  Game,
   AllUsers,
   AddUser,
   EditUser,
@@ -32,7 +32,7 @@ class App extends Component {
               path="/users/:userid/edit-user"
               render={props => <EditUser {...props} />}
             />
-            <Route exact path="/games" render={() => <GameView />} />
+            <Route exact path="/games/:id" render={() => <Game/>} />
           </div>
         </Router>
       </div>

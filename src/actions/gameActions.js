@@ -1,5 +1,6 @@
 import {
-  GET_HOME_GAMES
+  GET_HOME_GAMES,
+  GET_GAME,
 } from './actionTypes';
 
 import axios from 'axios';
@@ -13,7 +14,12 @@ const getHomeGames = games => {
   };
 };
 
-
+const getGame = game => {
+  return{
+    type: GET_GAME,
+    payload: game
+  };
+};
 
 
 
@@ -33,3 +39,12 @@ export const getHomeGamesThunk = () => async dispatch => {
     console.log(err);
   }
 };
+
+export const getGameThunk = gameId => async dispatch => {
+  try{
+    const res = await axios.get(`/api/rawg/${gameId}`);
+    dispatch(getGame(res.data));
+  } catch (err) {
+    console.log(err);
+  }
+}
