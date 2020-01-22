@@ -1,7 +1,10 @@
+import axios from 'axios'
+
 import {
     GET_THREAD,
     GET_THREADS,
-    GET_THREAD_INFO
+    GET_THREAD_INFO,
+    ADD_THREAD
 } from './actionTypes'
 
 const dummyThreads = [
@@ -50,14 +53,21 @@ const getThread = thread => {
         type: GET_THREAD,
         payload: thread
     };
-}
+};
 
 const getThreads = threads => {
-    return {
-        type: GET_THREADS,
-        payload: threads
-    };
-}
+  return {
+    type: GET_THREADS,
+    payload: threads
+  };
+};
+
+const addThread = thread => {
+  return {
+    type: ADD_THREAD,
+    payload: thread
+  };
+};
 
 const getThreadInfo = threadInfo => {
     return {
@@ -83,3 +93,31 @@ export const GetThreadInfoThunk = () => dispatch => {
     const arrayOfThreadInfoFromAPI = dummyThreadInfo;
     dispatch(getThreadInfo(arrayOfThreadInfoFromAPI));
 }
+
+export const AddThreadThunk = thread => dispatch => {
+  dispatch(addThread(thread));
+};
+
+/*
+// https://stackoverflow.com/questions/34698905/how-can-i-clone-a-javascript-object-except-for-one-key
+const objectWithoutKey = (object, key) => {
+  const { [key]: deletedKey, ...otherKeys } = object;
+  return otherKeys;
+};
+
+export const addThreadThunk = thread => async dispatch => {
+  try {
+    // checks if student has campusId, if not passes student object without campusId key
+    let apiThread = thread;
+    if (!thread.threadId) {
+      apiThread = objectWithoutKey(thread, "threadId");
+    }
+
+    await axios.post("/api/forums", apiThread);
+    dispatch(addThread(thread));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+*/
