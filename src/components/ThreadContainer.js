@@ -3,35 +3,45 @@ import ThreadView from './ThreadView'
 import {connect} from 'react-redux'
 import './Forum.css'
 
-import {GetThreadThunk, GetThreadInfoThunk} from '../actions'
+import {GetThreadThunk, AddThreadReplyThunk} from '../actions'
 
 class ThreadContainer extends Component{
     constructor(props){
         super(props);
+
+        this.state = {
+            user: "AwesomeMan", //get user data and insert
+            postTime: "beginning of time", //insert current date here
+            postContent: "w00t w00t",
+            isEdited: false
+        }
     }
 
 
     componentDidMount(){
         this.props.getThread(this.props.match.params.threadId);
-        this.props.getThreadInfo();
         //console.log("Current thread in component mount: " + this.props.currThread)
-        //Will result in null
+        //Will result in null, and then will update to proper value due to store being async
+    }
+
+    handleSubmit = (event) => {
+        console.log(this.state)
+        // this.props.addThreadReply(this.state);
     }
 
 
     render(){
-        const { threadInfo } = this.props;
         let threadRender = undefined;
         let threadReplies = undefined;
 
-        if (this.props.currThread === null || this.props.threadInfo === null){
+        if (this.props.currThread === null){
             threadRender = <div style={{paddingTop: "100px"}}> This thread does not exist </div>
-        } else if (threadInfo){
-            threadReplies = threadInfo.map(entireThread =>
-                entireThread.threadReplies.map(singleReply => <ThreadView key={singleReply.replyId} threadInfo={singleReply} />)
-                )
-
-            // console.log(threadReplies)
+        } else {
+            console.log(this.props.currThread)
+            threadReplies = this.props.currThread.replies.map(singleReply =>
+                <ThreadView key={singleReply.replyId} reply={singleReply} />
+            )
+            
 
             threadRender = <div style={{paddingTop: "100px"}}>
                 {this.props.currThread.postName}
@@ -41,6 +51,8 @@ class ThreadContainer extends Component{
 
         return(<div>
                 {threadRender}
+
+                <button onClick={this.handleSubmit}> Reply </button>
             </div>
         )
     }
@@ -49,17 +61,16 @@ class ThreadContainer extends Component{
 
 //This is suppose to give the state currThread to our this.props
 const mapStateToProps = state => {
-    console.log(state.thread.currThread);
+    // console.log(state.thread.currThread);
     return {
-        currThread: state.thread.currThread,
-        threadInfo: state.thread.threadInfo
+        currThread: state.thread.currThread
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return{
         getThread: id => dispatch(GetThreadThunk(id)),
-        getThreadInfo: () => dispatch(GetThreadInfoThunk())
+        //addThreadReply: (threadReply) => dispatch(AddThreadReplyThunk(threadReply))
     }
 }
 
