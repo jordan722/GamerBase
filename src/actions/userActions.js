@@ -3,7 +3,7 @@ import {
   ADD_USER,
   EDIT_USER,
   REMOVE_USER,
-  GET_USER,
+  GET_USER
 } from "./actionTypes";
 
 import axios from "axios";
@@ -44,8 +44,6 @@ const removeUser = userId => {
     payload: userId
   };
 };
-
-
 
 // Thunks
 export const getUsersThunk = () => async dispatch => {
