@@ -75,6 +75,7 @@ class ForumContainer extends Component {
         let toggledView = <div>
             <textarea name="postName" placeholder="Enter question here!" value={this.state.postName} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
             <button onClick={this.handleSubmit}> Submit </button>
+            <button onClick={this.handleToggle}> Cancel </button>
         </div>
 
         let unToggledView = <div>
