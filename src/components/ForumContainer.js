@@ -68,12 +68,14 @@ class ForumContainer extends Component {
           )
           forumDisplay = <ForumView threadBoxes={threadBoxes}/>
         }else{
-          forumDisplay = <div> Could not fetch threads from databse</div>
+          forumDisplay = <div> Could not fetch threads from databse </div>
         }
         
 
         let toggledView = <div>
-            <textarea name="postName" placeholder="Enter question here!" value={this.state.postName} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
+            <div>
+             <textarea name="postName" placeholder="Enter question here!" value={this.state.postName} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
+            </div>
             <button onClick={this.handleSubmit}> Submit </button>
             <button onClick={this.handleToggle}> Cancel </button>
         </div>
