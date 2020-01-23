@@ -44,7 +44,7 @@ class ForumContainer extends Component {
       id: this.props.allThreads.length + 1,
       lastUpdated: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear(),
       title: this.state.title,
-      userId: 1       //get user info here
+      userId: this.props.user.id       //get user info here
     };
 
     this.props.addThread(thread);
@@ -97,7 +97,8 @@ class ForumContainer extends Component {
 // GET THREAD INFO WHEN THUNKS AND STATES ARE ADDED TO STORE
 const mapStateToProps = state => {
   return {
-    allThreads: state.thread.allThreads
+    allThreads: state.thread.allThreads,
+    user: state.user.loggedInUser
   };
 };
 

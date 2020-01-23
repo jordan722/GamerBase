@@ -41,15 +41,10 @@ class ThreadContainer extends Component{
         })
 
         const date = new Date();
-        let replyId;
-        if(this.props.currThread.replies === undefined){
-            replyId = 0;
-        }else{
-            replyId = this.props.currThread.replies.length + 1
-        }
+
 
         const reply = {
-            userId: 1, //get user data and insert
+            userId: this.props.user.id, //get user data and insert
             //postTime: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear(), //insert current date here
             title: this.state.postContent,
             threadId: this.props.match.params.threadId
@@ -73,7 +68,7 @@ class ThreadContainer extends Component{
 
         if (this.props.currThread === undefined){
             threadRender = <div style={{paddingTop: "100px"}}> This thread does not exist </div>
-        } else if (this.props.currThread.replies !== undefined){
+        } else if (this.props.currThread.replies){
             threadReplies = this.props.currThread.replies.map((reply,i) =>
                 <ThreadView key={i} reply={reply} />
             )
@@ -102,6 +97,7 @@ class ThreadContainer extends Component{
 const mapStateToProps = state => {
     return {
         currThread: state.thread.currThread,
+        user: state.user.loggedInUser
     }
 };
 
