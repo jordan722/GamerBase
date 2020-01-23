@@ -10,14 +10,14 @@ class ForumContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      postName: "yooo",
+      title: "yooo",
       toggle: false
     };
   }
 
   //Dummy data
-  componentDidMount() {
-    this.props.getAllThreads();
+  async componentDidMount() {
+    await this.props.getAllThreads();
   }
 
   handleToggle = () => {
@@ -43,8 +43,8 @@ class ForumContainer extends Component {
     let thread = {
       id: this.props.allThreads.length + 1,
       lastUpdated: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear(),
-      postName: this.state.postName,
-      creator: "THE TEST MAN"       //get user info here
+      title: this.state.title,
+      userId: 1       //get user info here
     };
 
     this.props.addThread(thread);
@@ -70,11 +70,11 @@ class ForumContainer extends Component {
         }else{
           forumDisplay = <div> Could not fetch threads from databse </div>
         }
-        
+
 
         let toggledView = <div>
             <div>
-             <textarea name="postName" placeholder="Enter question here!" value={this.state.postName} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
+             <textarea name="title" placeholder="Enter question here!" value={this.state.title} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
             </div>
             <button onClick={this.handleSubmit}> Submit </button>
             <button onClick={this.handleToggle}> Cancel </button>

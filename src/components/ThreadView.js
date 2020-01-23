@@ -6,10 +6,8 @@ const ThreadView = props => {
 
   return (
     <div id="reply">
-      <p className="reply-box">{reply.user}</p>
-      <p className="reply-box">{reply.postContent}</p>
-      <p className="reply-box">{reply.postTime}</p>
-      <p className="reply-box">{reply.isEdited}</p>
+      <p className="reply-box">{reply.title}</p>
+      <p className="reply-box">{reply.userId}</p>
     </div>
   );
 };
