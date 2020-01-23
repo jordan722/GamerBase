@@ -27,7 +27,7 @@ const StreamTabs = (props) => {
                 ))}
               </div>
             ) : (
-              <div> No Streams Found </div>
+              <div style={{display:'flex', justifyContent:'center'}}> <p style={{fontSize:'50px', color:'white'}}> No Streams Found </p> </div>
             )
           }
         </TabPane>
@@ -44,7 +44,7 @@ const StreamTabs = (props) => {
                 ))}
               </div>
             ) : (
-              <div> No Streams Found </div>
+              <div style={{display:'flex', justifyContent:'center'}}> <p style={{fontSize:'50px', color:'white'}}> No Streams Found </p> </div>
             )
           }
         </TabPane>
@@ -61,7 +61,7 @@ const StreamTabs = (props) => {
                 ))}
               </div>
             ) : (
-              <div> No Streams Found </div>
+              <div style={{display:'flex', justifyContent:'center'}}> <p style={{fontSize:'50px', color:'white'}}> No Streams Found </p> </div>
             )
           }
         </TabPane>

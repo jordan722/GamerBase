@@ -16,10 +16,11 @@ const GameView = (props) => {
           <h2 style={{color:'white'}}> Released {props.game.released} </h2>
           <p style={{color:'white', fontSize:'14px', marginLeft:0}}> {cleanText}... </p>
         </div>
-        <div style={{float:'left', marginTop:'40px', marginLeft:'100px', textAlign:'left', width:'15%'}}>
+        <div style={{float:'left', marginTop:'30px', marginLeft:'100px', textAlign:'left', width:'15%'}}>
           <h2 style={{color:'white'}}>Rating: {props.game.rating}</h2>
-          {props.game.stores.length != 0 && <button className="steam-button"><a href={props.game.stores[0].url}> Download Game </a> </button>}
+          {props.game.stores.length != 0 && <button className="steam-button"><a style={{color:'white'}} href={props.game.stores[0].url}> Get Game </a> </button>}
           {props.game.clip && <TrailerModal video={props.game.clip}/>}
+          {props.game.reddit_url && <button className="steam-button"><a style={{color:'white'}} href={props.game.reddit_url}> View Subreddit </a> </button>}
 
         </div>
       </div>
