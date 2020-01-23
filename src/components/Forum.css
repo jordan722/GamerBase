@@ -1,53 +1,54 @@
-.forum-container{
-    margin: auto;
-    width: 60%;
-    color: rgb(154, 154, 154);
+.forum-container {
+  margin: auto;
+  width: 60%;
+  color: rgb(154, 154, 154);
 }
 
-.thread-box-info{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: small;
-    color:  rgb(100, 100, 100);
+.thread-box-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: small;
+  color: rgb(100, 100, 100);
 }
 
-.thread-box{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: small;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+.thread-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: small;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
-.last-updated{
-    display: flex;
-    min-width: 120px;
+.last-updated {
+  display: flex;
+  min-width: 120px;
 }
 
-.post-name{
-    display: flex;
-    min-width: 500px;
+.post-name {
+  display: flex;
+  min-width: 500px;
 }
 
-.reply-count{
-    min-width: 60px;
+.reply-count {
+  min-width: 60px;
 }
 
-.creator{
-    display: flex;
-    min-width: 120px;
+.creator {
+  display: flex;
+  min-width: 120px;
 }
 
 #reply {
-    display:flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.reply-box{
-    display: flex;
-    align-items: center;
-        
-    font-size: 16px;
+.reply-box {
+  display: flex;
+  align-items: center;
+  margin: 7px;
+  font-size: 20px;
 }

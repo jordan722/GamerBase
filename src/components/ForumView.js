@@ -1,6 +1,5 @@
 import React from "react";
 import "./Forum.css";
-//      <button onClick={handleClick}>Add Thread</button>
 
 const ForumView = props => {
   const { threadBoxes, handleClick } = props;
