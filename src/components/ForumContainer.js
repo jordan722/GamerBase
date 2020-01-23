@@ -10,7 +10,7 @@ class ForumContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      postName: "yooo",
+      title: "yooo",
       toggle: false
     };
   }
@@ -43,7 +43,7 @@ class ForumContainer extends Component {
     let thread = {
       id: this.props.allThreads.length + 1,
       lastUpdated: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear(),
-      title: this.state.postName,
+      title: this.state.title,
       userId: 1       //get user info here
     };
 
@@ -74,7 +74,7 @@ class ForumContainer extends Component {
 
         let toggledView = <div>
             <div>
-             <textarea name="postName" placeholder="Enter question here!" value={this.state.postName} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
+             <textarea name="title" placeholder="Enter question here!" value={this.state.title} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
             </div>
             <button onClick={this.handleSubmit}> Submit </button>
             <button onClick={this.handleToggle}> Cancel </button>

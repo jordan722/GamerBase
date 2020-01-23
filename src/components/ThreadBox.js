@@ -8,7 +8,7 @@ const ThreadBox = props => {
 
     let replyCount = 0;
 
-    if(thread.replies !== undefined){
+    if(thread.replies){
         replyCount = thread.replies.length
     }
 
@@ -19,7 +19,7 @@ const ThreadBox = props => {
             }
             <p className="last-updated">{thread.lastUpdated}</p>
             <p className="post-name">
-                <Link to={`./forums/${thread.id}`}>{thread.postName}</Link>
+                <Link to={`./forums/${thread.id}`}>{thread.title}</Link>
             </p>
             <p className="reply-count">{replyCount}</p>
             <p className="creator">{thread.creator}</p>
