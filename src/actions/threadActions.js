@@ -1,29 +1,55 @@
-import { GET_THREAD, GET_THREADS, ADD_THREAD } from "./actionTypes";
+// import axios from 'axios'
 
-import axios from "axios";
+import {
+    GET_THREAD,
+    GET_THREADS,
+    GET_THREAD_INFO,
+    ADD_THREAD,
+    ADD_THREAD_REPLY
+} from './actionTypes'
+
+
+const threadReplyEX = {
+    replyId: 1,
+    user: "RandomCoolGuy123",
+    postTime: "50 hours ago",
+    postContent: "H e l l o   w o r l d",
+    isEdited: false
+}
+
+const threadReplyEX2 = {
+    replyId: 2,
+    user: "SaltyTeemo",
+    postTime: "30 hours ago",
+    postContent: "Nah",
+    isEdited: false
+}
 
 const dummyThreads = [
-  {
-    id: 1,
-    lastUpdated: "today",
-    postName: "Test post",
-    replyCount: 100,
-    creator: "Kendrick"
-  },
-  {
-    id: 2,
-    lastUpdated: "yesterday",
-    postName: "Test post 2",
-    replyCount: 200,
-    creator: "Jordan"
-  }
+    {
+        id: 1,
+        lastUpdated: "today",
+        postName: "Test post",
+        replyCount: 100,
+        creator: "Kendrick",
+        replies: [threadReplyEX, threadReplyEX2]
+    },
+    {
+        id: 2,
+        lastUpdated: "yesterday",
+        postName: "Test post 2",
+        replyCount: 200,
+        creator: "Jordan",
+        replies: []
+    }
 ];
 
+
 const getThread = thread => {
-  return {
-    type: GET_THREAD,
-    payload: thread
-  };
+    return {
+        type: GET_THREAD,
+        payload: thread
+    };
 };
 
 const getThreads = threads => {
@@ -40,22 +66,35 @@ const addThread = thread => {
   };
 };
 
+const addThreadReply = threadReply => {
+    return{
+        type: ADD_THREAD_REPLY,
+        payload: threadReply
+    }
+}
+
 export const GetThreadsThunk = () => dispatch => {
-  const arrayOfThreadsFromAPI = dummyThreads;
-  dispatch(getThreads(arrayOfThreadsFromAPI));
+    const arrayOfThreadsFromAPI = dummyThreads;
+    dispatch(getThreads(arrayOfThreadsFromAPI));
 };
 
-export const GetThreadThunk = threadId => dispatch => {
-  //ThreadId is a string for whatever reason
-  // console.log("threadId: " +  typeof(threadId));
-  // console.log(dummyThreads.filter(item => item.id === parseInt(threadId)));
-  const thread = dummyThreads.filter(item => item.id === parseInt(threadId))[0];
-  dispatch(getThread(thread));
+export const GetThreadThunk = (threadId) => dispatch => {
+    //ThreadId is a string for whatever reason
+    const thread = dummyThreads.filter(item => item.id === parseInt(threadId))[0];
+    dispatch(getThread(thread));
 };
 
 export const AddThreadThunk = thread => dispatch => {
   dispatch(addThread(thread));
 };
+
+// export const AddThreadReplyThunk = (threadId, threadReply) => dispatch =>{
+//     //Must search for thread id in thread info
+//     //Then add threadReply to the end of threadReplies array
+//     const threadReplies = dummyThreadInfo.filter(item => item.id === parseInt(threadId))[0].threadReplies
+    
+//     dispatch(addThreadReply(threadReplies));
+// };
 
 /*
 // https://stackoverflow.com/questions/34698905/how-can-i-clone-a-javascript-object-except-for-one-key
