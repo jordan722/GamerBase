@@ -10,7 +10,7 @@ class ForumContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			title: "yooo",
+			title: "",
 			toggle: false
 		};
 	}
@@ -54,6 +54,7 @@ class ForumContainer extends Component {
 	render() {
 		//assumes all threads is an array
 		const { allThreads } = this.props;
+		console.log(allThreads);
 		let forumDisplay = undefined;
 		let threadBoxes = undefined;
 
@@ -96,7 +97,13 @@ class ForumContainer extends Component {
 		return (
 			<div>
 				{forumDisplay}
-				<div>{this.state.toggle ? toggledView : unToggledView}</div>
+				<div>
+					{this.props.isLoggedIn
+						? this.state.toggle
+							? toggledView
+							: unToggledView
+						: ""}
+				</div>
 			</div>
 		);
 	}
@@ -106,7 +113,8 @@ class ForumContainer extends Component {
 const mapStateToProps = state => {
 	return {
 		allThreads: state.thread.allThreads,
-		user: state.user.loggedInUser
+		user: state.user.loggedInUser,
+		isLoggedIn: !!state.user.loggedInUser.id
 	};
 };
 
