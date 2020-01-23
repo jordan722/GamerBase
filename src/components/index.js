@@ -7,3 +7,6 @@ export { default as AllUsers } from "./users/AllUsers";
 export { default as SingleUser } from "./users/SingleUser";
 export { default as AddUser } from "./users//AddUserContainer";
 export { default as EditUser } from "./users/EditUserContainer";
+
+export { default as Forum } from "./ForumContainer";
+export { default as Thread } from "./ThreadContainer"

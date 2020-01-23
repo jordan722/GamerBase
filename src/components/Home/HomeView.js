@@ -16,7 +16,7 @@ const HomeView = props => {
   return (
     <div>
       <h1>Home Page</h1>
-      <p>Trending Games -- Click arrow or drag items!</p>
+      <h2>Trending Games -- Click arrow or drag items!</h2>
       <div className="scroll">
         <ScrollMenu
           data={menu}
@@ -36,7 +36,7 @@ const HomeView = props => {
           wheel={state.wheel}
         />
       </div>
-      <p>Top 100</p>
+      <h2>Top 100</h2>
       <div className="scroll">
         <ScrollMenu
           data={menu}
@@ -56,7 +56,7 @@ const HomeView = props => {
           wheel={state.wheel}
         />
       </div>
-      <p>Upcoming</p>
+      <h2>Upcoming</h2>
       <div className="scroll">
         <ScrollMenu
           data={menu}

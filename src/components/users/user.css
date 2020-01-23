@@ -127,3 +127,20 @@ div.input {
   margin-bottom: 0px;
   font-family: FreeMono, monospace;
 }
+
+#textarea {
+  background-color: black;
+  color: white;
+}
+
+button {
+  background-color: black;
+}
+
+#submit_thread {
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  margin-left: 46.75%;
+  margin-bottom: 10px;
+}
