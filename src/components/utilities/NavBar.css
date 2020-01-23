@@ -3,13 +3,14 @@
   overflow: hidden;
   background-color: #18181b;
   position: fixed;
+  z-index: 10;
   top: 0;
   width: 100%;
   box-shadow: 0px 1px 2px 1px black;
 }
 
 .logo {
-  float:left;
+  float: left;
   display: block;
   color: white;
   text-align: center;
@@ -18,13 +19,13 @@
   font-size: 30px;
   font-weight: bold;
   text-shadow: -0.5px 0.5px 0px #8545e1,
-               -1px 1px 0px #8545e1,
-               -1.5px 1.5px 0px #8545e1,
-               -2px 2px 0px #8545e1,
-               -2.5px 2.5px 0px #8545e1,
-               -3px 3px 0px #8545e1,
-               -3.5px 3.5px 0px #8545e1,
-               -4px 4px 0px #8545e1;
+    -1px 1px 0px #8545e1,
+    -1.5px 1.5px 0px #8545e1,
+    -2px 2px 0px #8545e1,
+    -2.5px 2.5px 0px #8545e1,
+    -3px 3px 0px #8545e1,
+    -3.5px 3.5px 0px #8545e1,
+    -4px 4px 0px #8545e1;
 }
 
 .sign-up {
@@ -41,8 +42,8 @@
   font-weight: bold;
 }
 
-.sign-up:hover{
-  background-color:#7946e8;
+.sign-up:hover {
+  background-color: #7946e8;
 }
 
 .login {
@@ -59,6 +60,6 @@
   font-weight: bold;
 }
 
-.login:hover{
-  background-color:#464649;
+.login:hover {
+  background-color: #464649;
 }

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ForumView from "./ForumView";
 import ThreadBox from "./ThreadBox";
-import "./users/user.css";
+import "../users/user.css";
 
-import { GetThreadsThunk, AddThreadThunk } from "../actions";
+import { GetThreadsThunk, AddThreadThunk } from "../../actions";
 
 class ForumContainer extends Component {
 	constructor(props) {
