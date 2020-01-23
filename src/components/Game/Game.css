@@ -7,9 +7,18 @@
 .game-header{
   height:250px;
   width:100%;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)),
-                    url("https://static-cdn.jtvnw.net/categorydb-production-game-banners/33214/en-us/33b8c8eb-45b0-47d9-9a69-521b45e35222.jpeg");
   background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.game-logo{
+  float:left;
+  width: 144px;
+  height: 192px;
+  margin-top: 30px;
+  margin-left: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 }
 
@@ -23,6 +32,7 @@
   text-decoration: none;
   font-size: 13px;
   font-weight: bold;
+  margin:0
 }
 
 .steam-button:hover{
