@@ -10,32 +10,23 @@ class ForumContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      last_updated: "",
-      post_name: "",
-      reply_count: "",
-      creater: "",
-      toggle: true
+      postName: "yooo",
+      toggle: false
     };
   }
 
   //Dummy data
   componentDidMount() {
     this.props.getAllThreads();
-    this.setState({
-      last_updated: "Just ",
-      post_name: "Submit",
-      reply_count: this.state.reply_count,
-      creater: this.state.creater
-    });
   }
 
-  handleThread = () => {
+  handleToggle = () => {
     this.setState({
       toggle: !this.state.toggle
     });
   };
 
-  handleChange = event => {
+  handleOnChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -43,29 +34,20 @@ class ForumContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let thread = {
-      id: 3,
-      last_updated: this.state.last_updated,
-      post_name: this.state.post_name,
-      reply_count: this.state.reply_count,
-      creater: this.state.creater
-    };
-    this.props.addThread(thread);
-  };
+    this.setState({
+      toggle: !this.state.toggle
+    })
 
-  display = () => {
-    if (this.state.toggle) {
-      return null;
-    } else {
-      return (
-        <div id="TEXT">
-          <textarea placeholder="Enter question here!" id="textarea"></textarea>
-          <button onClick={this.handleSubmit} id="submit_thread">
-            Submit
-          </button>
-        </div>
-      );
-    }
+    const date = new Date();
+
+    let thread = {
+      id: this.props.allThreads.length + 1,
+      lastUpdated: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear(),
+      postName: this.state.postName,
+      creator: "THE TEST MAN"       //get user info here
+    };
+
+    this.props.addThread(thread);
   };
 
   render() {
@@ -74,38 +56,41 @@ class ForumContainer extends Component {
     let forumDisplay = undefined;
     let threadBoxes = undefined;
 
-    //outputs information if no threads exist
-    if (allThreads !== undefined && allThreads.length === 0) {
-      forumDisplay = <div> No threads currently exist </div>;
-    } else if (allThreads) {
-      //console.log(allThreads);
-      threadBoxes = allThreads.map(singleThread => {
-        //console.log(singleThread)
-        return <ThreadBox key={singleThread.id} thread={singleThread} />;
-      });
-      forumDisplay = <ForumView threadBoxes={threadBoxes} />;
-    }
+      //outputs information if no threads exist
+      if(allThreads !== undefined && allThreads.length === 0){
+          forumDisplay = <div> No threads currently exist </div>
+      }else if(allThreads !== undefined){
+          //console.log(allThreads);
+          threadBoxes = allThreads.map(singleThread => {
+              //console.log(singleThread)
+              return <ThreadBox key={singleThread.id} thread={singleThread}/>
+              }
+          )
+          forumDisplay = <ForumView threadBoxes={threadBoxes}/>
+        }else{
+          forumDisplay = <div> Could not fetch threads from databse </div>
+        }
+        
 
-    let displayAll = this.display();
-    const currToggle = this.state.toggle;
-    let button;
-
-    if (currToggle) {
-      button = <button onClick={this.handleThread}>Add Thread</button>;
-    } else {
-      button = <button onClick={this.handleThread}>Cancel</button>;
-    }
-
-    return (
-      <div>
-        {forumDisplay}
-        <div>
-          {displayAll}
-          {/*<button onClick={this.handleThread}>Add thread</button>*/}
-          {button}
+        let toggledView = <div>
+            <div>
+             <textarea name="postName" placeholder="Enter question here!" value={this.state.postName} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
+            </div>
+            <button onClick={this.handleSubmit}> Submit </button>
+            <button onClick={this.handleToggle}> Cancel </button>
         </div>
-      </div>
-    );
+
+        let unToggledView = <div>
+            <button onClick={this.handleToggle}> Add Thread </button>
+        </div>
+
+        return(<div>
+                {forumDisplay}
+                <div>
+                    {this.state.toggle ? toggledView : unToggledView}
+                </div>
+            </div>
+        )
   }
 }
 

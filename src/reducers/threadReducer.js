@@ -6,8 +6,7 @@ import {
 } from '../actions/actionTypes'
 
 const initialState = {
-    allThreads: [],
-    currThread: null
+    allThreads: []
 }
 
 export default (state = initialState, action) => {
@@ -29,7 +28,8 @@ export default (state = initialState, action) => {
             };
         case ADD_THREAD_REPLY:
             return{
-                ...state
+                ...state,
+                currThread: action.payload
             }
         default:
             return state;

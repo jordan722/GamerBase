@@ -2,7 +2,7 @@ import React from "react";
 import "./Forum.css";
 
 const ForumView = props => {
-  const { threadBoxes, handleClick } = props;
+  const { threadBoxes } = props;
 
   return (
     <div className="forum-container">

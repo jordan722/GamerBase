@@ -64,7 +64,7 @@ class Home extends Component {
   state = {
     alignCenter: true,
     clickWhenDrag: false,
-    dragging: true,
+    dragging: false,
     hideArrows: true,
     hideSingleArrow: true,
     itemsCount: list.length,

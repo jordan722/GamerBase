@@ -3,7 +3,6 @@
 import {
     GET_THREAD,
     GET_THREADS,
-    GET_THREAD_INFO,
     ADD_THREAD,
     ADD_THREAD_REPLY
 } from './actionTypes'
@@ -25,12 +24,11 @@ const threadReplyEX2 = {
     isEdited: false
 }
 
-const dummyThreads = [
+let dummyThreads = [
     {
         id: 1,
         lastUpdated: "today",
         postName: "Test post",
-        replyCount: 100,
         creator: "Kendrick",
         replies: [threadReplyEX, threadReplyEX2]
     },
@@ -38,7 +36,6 @@ const dummyThreads = [
         id: 2,
         lastUpdated: "yesterday",
         postName: "Test post 2",
-        replyCount: 200,
         creator: "Jordan",
         replies: []
     }
@@ -66,10 +63,10 @@ const addThread = thread => {
   };
 };
 
-const addThreadReply = threadReply => {
+const addThreadReply = (updateThread) => {
     return{
         type: ADD_THREAD_REPLY,
-        payload: threadReply
+        payload: updateThread
     }
 }
 
@@ -85,8 +82,48 @@ export const GetThreadThunk = (threadId) => dispatch => {
 };
 
 export const AddThreadThunk = thread => dispatch => {
+  //need to update api
+  dummyThreads = [...dummyThreads, thread];
+
   dispatch(addThread(thread));
 };
+
+export const AddThreadReplyThunk = (threadId, threadReply) => dispatch => {
+  //need to fetch curr thread and modify it
+  const thread = dummyThreads.filter(item => item.id === parseInt(threadId))[0];
+
+  let newThreadReplies;
+  if(thread.replies !== undefined){
+    newThreadReplies = [...thread.replies, threadReply];
+  } else{
+    newThreadReplies = [threadReply];
+  }
+
+  const newThread = {
+    id: thread.id,
+    lastUpdated: thread.lastUpdated,
+    postName: thread.postName,
+    replyCount: thread.replyCount,
+    creator: thread.creator,
+    replies: newThreadReplies
+  }
+
+
+  //Update backend, and then return current thread
+  //update allThreads
+  let changedThreads = dummyThreads.map(item => {
+    if(item.id === parseInt(threadId)){
+      return newThread
+    }else{
+      return item
+    }
+  });
+
+  dummyThreads = changedThreads;
+
+  dispatch(addThreadReply(newThread))
+}
+
 
 // export const AddThreadReplyThunk = (threadId, threadReply) => dispatch =>{
 //     //Must search for thread id in thread info
