@@ -104,11 +104,11 @@ export const AddThreadReplyThunk = (threadId, threadReply) => async dispatch => 
     let currThread = res.data;
 
     let newThreadReplies;
-    if(currThread.replies !== undefined){
+    if(currThread.replies){
       currThread.replies.push(threadReply);
       newThreadReplies = currThread;
     } else{
-      newThreadReplies = {replies: threadReply};
+      newThreadReplies = {replies: [threadReply]};
     }
 
     await axios.put(`/api/posts/${threadId}`, newThreadReplies);
