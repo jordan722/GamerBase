@@ -70,6 +70,12 @@ class Home extends Component {
     itemsCount: list.length,
     selected: "item1",
     translate: 0,
+    trendingOnSelect: "",
+    trendingSetSelected: "",
+    top100OnSelect: "",
+    top100SetSelected: "",
+    upcomingOnSelect: "",
+    upcomingSetSelected: "",
     upcomingTranslate: 0,
     top100Translate: 0,
     trendingTranslate: 0,
@@ -121,11 +127,11 @@ class Home extends Component {
 const mapStateToProps = state => ({
   trending: state.game.trending,
   toprated: state.game.toprated,
-  upcoming: state.game.upcoming,
+  upcoming: state.game.upcoming
 });
 
 const mapDispatchToProps = dispatch => ({
   getHomeGames: () => dispatch(getHomeGamesThunk())
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
