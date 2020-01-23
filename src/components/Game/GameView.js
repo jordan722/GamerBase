@@ -1,26 +1,33 @@
 import React from "react";
 import TrailerModal from '../../components/utilities/TrailerModal';
 import StreamTabs from '../../components/utilities/StreamTabs';
-import "./GameView.css";
+import "./Game.css";
 
-const GameView = () => {
+const GameView = (props) => {
+
+  let cleanText = props.game.description.replace(/<\/?[^>]+(>|$)/g, "").slice(0,250) + "...";
+
   return (
     <div className="main-container">
-      <div className="game-header">
-        <img src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-144x192.jpg" style={{float:'left', marginTop:'30px', marginLeft:'40px'}}/>
+      <div className="game-header" style={{backgroundImage:`linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url(${props.game.background_image})`}}>
+        {props.game.twitch && <div className="game-logo" style={{backgroundImage:`url(${props.game.twitch.box_art_url.replace('{height}',192).replace('{width}',144)})`}}/>}
         <div style={{float:'left', marginTop:'-40px', marginLeft:'40px', textAlign:'left', color:'white', width:'30%'}}>
-          <h1>Fortnite</h1>
-          <h2> 74.8K Viewers . 51.7M Followers </h2>
-          <p style={{color:'white', fontSize:'14px', marginLeft:0}}> Fortnite is a sandbox-survival third-person shooter from the studio behind the Unreal Tournament and Gears of War series. </p>
+          <h1 style={{color:'white'}}>{props.game.name}</h1>
+          <h2 style={{color:'white'}}> Released {props.game.released} </h2>
+          <p style={{color:'white', fontSize:'14px', marginLeft:0}}> {cleanText}... </p>
         </div>
-        <div style={{float:'left', marginTop:'40px', marginLeft:'100px', textAlign:'left', width:'15%'}}>
-          <h2>Rating: 4.1/5</h2>
-          <button className="steam-button"><a href="https://www.epicgames.com/fortnite"> Download Game </a> </button>
-          <TrailerModal />
+        <div style={{float:'left', marginTop:'30px', marginLeft:'100px', textAlign:'left', width:'15%'}}>
+          <h2 style={{color:'white'}}>Rating: {props.game.rating}</h2>
+          {props.game.stores.length != 0 && <button className="steam-button"><a style={{color:'white'}} href={props.game.stores[0].url}> Get Game </a> </button>}
+          {props.game.clip && <TrailerModal video={props.game.clip}/>}
+          {props.game.reddit_url && <button className="steam-button"><a style={{color:'white'}} href={props.game.reddit_url}> View Subreddit </a> </button>}
+
         </div>
       </div>
-      <h1> Active Streams </h1>
-      <StreamTabs />
+      <div style={{paddingBottom:'50px'}}>
+        <h1 style={{color:'white'}}> Active Streams </h1>
+        <StreamTabs twitch={props.game.twitch} mixer={props.game.mixer} youtube={props.game.youtube}/>
+      </div>
     </div>
   );
 };
