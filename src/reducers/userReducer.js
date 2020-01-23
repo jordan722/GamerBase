@@ -2,12 +2,14 @@ import {
 	ADD_USER,
 	EDIT_USER,
 	REMOVE_USER,
-	GET_USER
+	GET_USER,
+	LOGIN,
+	LOGOUT
 } from "../actions/actionTypes";
 
 const initialState = {
-	loggedInUser: null,
-	currentUser: null
+	loggedInUser: {},
+	currentUser: {}
 };
 
 export default (state = initialState, action) => {
@@ -37,6 +39,16 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				allUsers: state.allUsers.filter(user => user.id !== action.payload)
+			};
+		case LOGIN:
+			return {
+				...state,
+				loggedInUser: action.payload
+			};
+		case LOGOUT:
+			return {
+				...state,
+				loggedInUser: {}
 			};
 		default:
 			return state;

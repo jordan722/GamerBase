@@ -1,4 +1,11 @@
-import { ADD_USER, EDIT_USER, REMOVE_USER, GET_USER } from "./actionTypes";
+import {
+	ADD_USER,
+	EDIT_USER,
+	REMOVE_USER,
+	GET_USER,
+	LOGIN,
+	LOGOUT
+} from "./actionTypes";
 
 import axios from "axios";
 
@@ -32,6 +39,19 @@ const removeUser = userId => {
 	};
 };
 
+const login = user => {
+	return {
+		type: LOGIN,
+		payload: user
+	};
+};
+
+const logout = () => {
+	return {
+		type: LOGOUT
+	};
+};
+
 // Thunks
 export const getUserThunk = userId => async dispatch => {
 	try {
@@ -42,12 +62,6 @@ export const getUserThunk = userId => async dispatch => {
 	}
 };
 
-// https://stackoverflow.com/questions/34698905/how-can-i-clone-a-javascript-object-except-for-one-key
-const objectWithoutKey = (object, key) => {
-	const { [key]: deletedKey, ...otherKeys } = object;
-	return otherKeys;
-};
-
 export const addUserThunk = (name, email, password) => async dispatch => {
 	try {
 		const body = {
@@ -56,7 +70,7 @@ export const addUserThunk = (name, email, password) => async dispatch => {
 			password: password
 		};
 		const newUser = await axios.post("/api/auth/signup", body);
-		dispatch(addUser(newUser));
+		dispatch(addUser(newUser.data));
 	} catch (err) {
 		console.log(err);
 	}
@@ -75,6 +89,28 @@ export const removeUserThunk = userId => async dispatch => {
 	try {
 		await axios.delete(`/api/users/${userId}`);
 		dispatch(removeUser(userId));
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const loginThunk = (email, password) => async dispatch => {
+	try {
+		const body = {
+			email: email,
+			password: password
+		};
+		const user = await axios.post("/api/auth/login", body);
+		dispatch(login(user.data));
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export const logoutThunk = () => async dispatch => {
+	try {
+		await axios.delete("/api/auth/logout");
+		dispatch(logout());
 	} catch (err) {
 		console.log(err);
 	}
