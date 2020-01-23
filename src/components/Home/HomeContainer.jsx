@@ -10,7 +10,7 @@ const MenuItem = ({ img, selected, name, id }) => {
 	return (
 		<a href={`/games/${id}`}>
 			<div className={`menu-item ${selected}`}>
-				<img src={img} />
+				<img alt="game" src={img} />
 				<p>{name}</p>
 			</div>
 		</a>
@@ -64,10 +64,6 @@ class Home extends Component {
 		transition: 0.3,
 		wheel: false
 	};
-
-	constructor(props) {
-		super(props);
-	}
 
 	async componentDidMount(props) {
 		await this.props.getHomeGames();
