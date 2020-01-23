@@ -1,26 +1,47 @@
+/*
 .page {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .login-container {
-	padding: 150px;
-	margin-top: 150px;
-	background-color: #18181b;
-	width: 50vw;
+  padding: 150px;
+  margin-top: 150px;
+  background-color: #18181b;
+  width: 50vw;
 }
-
+*/
 label {
-	width: 100px;
-	display: inline-block
+  width: 100px;
+  display: inline-block;
+  font-size: 20px;
 }
 
 .email,
 .password {
-	margin: 10px
+  margin: 10px;
 }
 
 button {
-	margin-top: 30px
+  margin-top: 5px;
+}
+
+input {
+  color: black;
+}
+
+.form,
+.page {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  margin-left: 46.75%;
+  margin-bottom: 10px;
+}
+
+.signup {
+  padding-top: 10px;
 }
