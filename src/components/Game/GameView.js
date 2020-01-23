@@ -23,8 +23,10 @@ const GameView = (props) => {
 
         </div>
       </div>
-      <h1> Active Streams </h1>
-      <StreamTabs twitch={props.game.twitch}/>
+      <div style={{paddingBottom:'50px'}}>
+        <h1 style={{color:'white'}}> Active Streams </h1>
+        <StreamTabs twitch={props.game.twitch} mixer={props.game.mixer} youtube={props.game.youtube}/>
+      </div>
     </div>
   );
 };

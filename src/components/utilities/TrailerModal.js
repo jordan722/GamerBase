@@ -17,14 +17,12 @@ class TrailerModal extends React.Component {
   };
 
   handleOk = e => {
-    console.log(e);
     this.setState({
       visible: false
     });
   };
 
   handleCancel = e => {
-    console.log(e);
     this.setState({
       visible: false
     });
@@ -53,9 +51,9 @@ class TrailerModal extends React.Component {
             width="560"
             height="315"
             src={this.props.video}
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           />
         </Modal>
       </div>
