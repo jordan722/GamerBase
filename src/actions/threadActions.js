@@ -82,6 +82,9 @@ export const GetThreadThunk = (threadId) => dispatch => {
 };
 
 export const AddThreadThunk = thread => dispatch => {
+  //need to update api
+  dummyThreads = [...dummyThreads, thread];
+
   dispatch(addThread(thread));
 };
 
@@ -89,7 +92,13 @@ export const AddThreadReplyThunk = (threadId, threadReply) => dispatch => {
   //need to fetch curr thread and modify it
   const thread = dummyThreads.filter(item => item.id === parseInt(threadId))[0];
 
-  let newThreadReplies = [...thread.replies, threadReply];
+  let newThreadReplies;
+  if(thread.replies !== undefined){
+    newThreadReplies = [...thread.replies, threadReply];
+  } else{
+    newThreadReplies = [threadReply];
+  }
+
   const newThread = {
     id: thread.id,
     lastUpdated: thread.lastUpdated,

@@ -10,30 +10,23 @@ class ForumContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      last_updated: "",
-      post_name: "",
-      creater: "",
-      toggle: true
+      postName: "yooo",
+      toggle: false
     };
   }
 
   //Dummy data
   componentDidMount() {
     this.props.getAllThreads();
-    this.setState({
-      last_updated: "Just ",
-      post_name: "Submit",
-      creater: this.state.creater
-    });
   }
 
-  handleThread = () => {
+  handleToggle = () => {
     this.setState({
       toggle: !this.state.toggle
     });
   };
 
-  handleChange = event => {
+  handleOnChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -41,28 +34,20 @@ class ForumContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.setState({
+      toggle: !this.state.toggle
+    })
+
+    const date = new Date();
+
     let thread = {
       id: this.props.allThreads.length + 1,
-      last_updated: this.state.last_updated,
-      post_name: this.state.post_name,
-      creater: this.state.creater
+      lastUpdated: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear(),
+      postName: this.state.postName,
+      creator: "THE TEST MAN"       //get user info here
     };
-    this.props.addThread(thread);
-  };
 
-  display = () => {
-    if (this.state.toggle) {
-      return null;
-    } else {
-      return (
-        <div id="TEXT">
-          <textarea placeholder="Enter question here!" id="textarea"></textarea>
-          <button onClick={this.handleSubmit} id="submit_thread">
-            Submit
-          </button>
-        </div>
-      );
-    }
+    this.props.addThread(thread);
   };
 
   render() {
@@ -71,55 +56,38 @@ class ForumContainer extends Component {
     let forumDisplay = undefined;
     let threadBoxes = undefined;
 
-<<<<<<< HEAD
-    //outputs information if no threads exist
-    if (allThreads !== undefined && allThreads.length === 0) {
-      forumDisplay = <div> No threads currently exist </div>;
-    } else if (allThreads) {
-      //console.log(allThreads);
-      threadBoxes = allThreads.map(singleThread => {
-        //console.log(singleThread)
-        return <ThreadBox key={singleThread.id} thread={singleThread} />;
-      });
-      forumDisplay = <ForumView threadBoxes={threadBoxes} />;
-    }
-=======
-        //outputs information if no threads exist
-        if(allThreads !== undefined && allThreads.length === 0){
-            forumDisplay = <div> No threads currently exist </div>
-        }else if(allThreads !== undefined){
-            //console.log(allThreads);
-            threadBoxes = allThreads.map(singleThread => {
-                //console.log(singleThread)
-                return <ThreadBox key={singleThread.id} thread={singleThread}/>
-                }
-            )
-            forumDisplay = <ForumView threadBoxes={threadBoxes}/>
+      //outputs information if no threads exist
+      if(allThreads !== undefined && allThreads.length === 0){
+          forumDisplay = <div> No threads currently exist </div>
+      }else if(allThreads !== undefined){
+          //console.log(allThreads);
+          threadBoxes = allThreads.map(singleThread => {
+              //console.log(singleThread)
+              return <ThreadBox key={singleThread.id} thread={singleThread}/>
+              }
+          )
+          forumDisplay = <ForumView threadBoxes={threadBoxes}/>
         }else{
           forumDisplay = <div> Could not fetch threads from databse</div>
         }
->>>>>>> Added ability to add replies to threads & track reply count
+        
 
-    let displayAll = this.display();
-    const currToggle = this.state.toggle;
-    let button;
-
-    if (currToggle) {
-      button = <button onClick={this.handleThread}>Add Thread</button>;
-    } else {
-      button = <button onClick={this.handleThread}>Cancel</button>;
-    }
-
-    return (
-      <div>
-        {forumDisplay}
-        <div>
-          {displayAll}
-          {/*<button onClick={this.handleThread}>Add thread</button>*/}
-          {button}
+        let toggledView = <div>
+            <textarea name="postName" placeholder="Enter question here!" value={this.state.postName} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
+            <button onClick={this.handleSubmit}> Submit </button>
         </div>
-      </div>
-    );
+
+        let unToggledView = <div>
+            <button onClick={this.handleToggle}> Add Thread </button>
+        </div>
+
+        return(<div>
+                {forumDisplay}
+                <div>
+                    {this.state.toggle ? toggledView : unToggledView}
+                </div>
+            </div>
+        )
   }
 }
 

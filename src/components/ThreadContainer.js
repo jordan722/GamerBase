@@ -42,11 +42,17 @@ class ThreadContainer extends Component{
         })
 
         const date = new Date();
+        let replyId;
+        if(this.props.currThread.replies === undefined){
+            replyId = 0;
+        }else{
+            replyId = this.props.currThread.replies.length + 1
+        }
 
         const reply = {
-            replyId: this.props.currThread.replies.length + 1, //must autoGenerate 
+            replyId: replyId, //must autoGenerate 
             user: "AwesomeMan", //get user data and insert
-            postTime: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear() , //insert current date here
+            postTime: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear(), //insert current date here
             postContent: this.state.postContent,
             isEdited: this.state.isEdited
         }
@@ -58,19 +64,6 @@ class ThreadContainer extends Component{
         let threadRender = undefined;
         let threadReplies = undefined;
 
-        if (this.props.currThread === null){
-            threadRender = <div style={{paddingTop: "100px"}}> This thread does not exist </div>
-        } else {
-            threadReplies = this.props.currThread.replies.map(singleReply =>
-                <ThreadView key={singleReply.replyId} reply={singleReply} />
-            )
-
-            threadRender = <div style={{paddingTop: "100px"}}>  
-                {this.props.currThread.postName}
-                {threadReplies}
-            </div>
-        }
-
         let toggledView = <div>
             <textarea name="postContent" value={this.state.postContent} onChange={this.handleOnChange} style={{color: "black"}}></textarea>
             <button onClick={this.handleSubmit}>submit</button>
@@ -80,9 +73,27 @@ class ThreadContainer extends Component{
             <button onClick={this.handleToggle}> Reply </button>
         </div>
 
+        if (this.props.currThread === undefined){
+            threadRender = <div style={{paddingTop: "100px"}}> This thread does not exist </div>
+        } else if (this.props.currThread.replies !== undefined){
+            threadReplies = this.props.currThread.replies.map(singleReply =>
+                <ThreadView key={singleReply.replyId} reply={singleReply} />
+            )
+
+            threadRender = <div style={{paddingTop: "100px"}}>  
+                {this.props.currThread.postName}
+                {threadReplies}
+                {this.state.toggle ? toggledView : unToggledView}
+            </div>
+        } else {
+            threadRender = <div style={{paddingTop: "100px"}}>  
+                {this.props.currThread.postName}
+                {this.state.toggle ? toggledView : unToggledView}
+            </div>
+        }
+
         return(<div>
                 {threadRender}
-                {this.state.toggle ? toggledView : unToggledView}
             </div>
         )
     }

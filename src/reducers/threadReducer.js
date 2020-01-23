@@ -6,8 +6,7 @@ import {
 } from '../actions/actionTypes'
 
 const initialState = {
-    allThreads: [],
-    currThread: null
+    allThreads: []
 }
 
 export default (state = initialState, action) => {
