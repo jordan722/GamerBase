@@ -3,7 +3,7 @@ import ThreadView from './ThreadView'
 import {connect} from 'react-redux'
 import './Forum.css'
 
-import {GetThreadThunk, AddThreadReplyThunk} from '../actions' 
+import {GetThreadThunk, AddThreadReplyThunk} from '../actions'
 
 class ThreadContainer extends Component{
     constructor(props){
@@ -17,10 +17,9 @@ class ThreadContainer extends Component{
     }
 
 
-    componentDidMount(){
-        this.props.getThread(this.props.match.params.threadId);
-        //console.log("Current thread in component mount: " + this.props.currThread)
-        //Will result in null, and then will update to proper value due to store being async
+    async componentDidMount(){
+        await this.props.getThread(this.props.match.params.threadId);
+        console.log("looking for thread");
     }
 
     handleOnChange = (event) => {
@@ -50,11 +49,10 @@ class ThreadContainer extends Component{
         }
 
         const reply = {
-            replyId: replyId, //must autoGenerate 
-            user: "AwesomeMan", //get user data and insert
-            postTime: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear(), //insert current date here
-            postContent: this.state.postContent,
-            isEdited: this.state.isEdited
+            userId: 1, //get user data and insert
+            //postTime: date.getDate() + "/" + date.getDay() + "/" + date.getFullYear(), //insert current date here
+            title: this.state.postContent,
+            threadId: this.props.match.params.threadId
         }
 
         this.props.addThreadReply(this.props.match.params.threadId, reply);
@@ -76,18 +74,18 @@ class ThreadContainer extends Component{
         if (this.props.currThread === undefined){
             threadRender = <div style={{paddingTop: "100px"}}> This thread does not exist </div>
         } else if (this.props.currThread.replies !== undefined){
-            threadReplies = this.props.currThread.replies.map(singleReply =>
-                <ThreadView key={singleReply.replyId} reply={singleReply} />
+            threadReplies = this.props.currThread.replies.map((reply,i) =>
+                <ThreadView key={i} reply={reply} />
             )
 
-            threadRender = <div style={{paddingTop: "100px"}}>  
-                {this.props.currThread.postName}
+            threadRender = <div style={{paddingTop: "100px"}}>
+                {this.props.currThread.title}
                 {threadReplies}
                 {this.state.toggle ? toggledView : unToggledView}
             </div>
         } else {
-            threadRender = <div style={{paddingTop: "100px"}}>  
-                {this.props.currThread.postName}
+            threadRender = <div style={{paddingTop: "100px"}}>
+                {this.props.currThread.title}
                 {this.state.toggle ? toggledView : unToggledView}
             </div>
         }

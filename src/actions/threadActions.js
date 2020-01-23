@@ -71,7 +71,7 @@ const addThreadReply = (updateThread) => {
 
 export const GetThreadsThunk = () => async dispatch => {
   try{
-    const res = await axios.get("/api/post")
+    const res = await axios.get("/api/posts")
     dispatch(getThreads(res.data));
   } catch(err){
     console.log(err);
@@ -80,7 +80,7 @@ export const GetThreadsThunk = () => async dispatch => {
 
 export const GetThreadThunk = (threadId) => async dispatch => {
   try{
-    const res = await axios.get(`/api/post/${threadId}`);
+    const res = await axios.get(`/api/posts/${threadId}`);
     dispatch(getThread(res.data))
   } catch(err){
     console.log(err)
@@ -89,7 +89,7 @@ export const GetThreadThunk = (threadId) => async dispatch => {
 
 export const AddThreadThunk = thread => async dispatch => {
   try{
-    await axios.post("/api/post", thread);
+    await axios.post("/api/posts", thread);
     dispatch(addThread(thread))
   } catch (err) {
     console.log(err)
@@ -99,20 +99,22 @@ export const AddThreadThunk = thread => async dispatch => {
 
 export const AddThreadReplyThunk = (threadId, threadReply) => async dispatch => {
   try{
-    const res = await axios.get(`/api/post/${threadId}`);
-    
+    const res = await axios.get(`/api/posts/${threadId}`);
+
     let currThread = res.data;
 
     let newThreadReplies;
     if(currThread.replies !== undefined){
-      newThreadReplies = [...currThread.replies, threadReply];
+      currThread.replies.push(threadReply);
+      newThreadReplies = currThread;
     } else{
-      newThreadReplies = [threadReply];
+      newThreadReplies = {replies: threadReply};
     }
 
-    await axios.put(`/api/${threadId}`, newThreadReplies);
-    
-    const newThread = await axios.get(`/api/post/${threadId}`)
+    await axios.put(`/api/posts/${threadId}`, newThreadReplies);
+
+
+    const newThread = await axios.get(`/api/posts/${threadId}`)
 
     dispatch(addThreadReply(newThread.data))
   } catch(err){
