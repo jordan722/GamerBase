@@ -35,6 +35,8 @@ div.menu-wrapper {
 }
 
 img {
-  width: 200px;
-  height: 200px;
+  max-width: 330px;
+  max-height: 195px;
+  width: auto;
+  height: auto;
 }
