@@ -41,6 +41,7 @@
 }
 
 #reply {
+<<<<<<< HEAD
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -52,3 +53,18 @@
   margin: 7px;
   font-size: 20px;
 }
+=======
+    display:flex;
+    flex-direction: row;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    margin: auto;
+    max-width: 60%;
+}
+
+.reply-box{
+    display: flex;
+    font-size: small;
+    min-width: 200px;
+}
+>>>>>>> Added ability to add replies to threads & track reply count

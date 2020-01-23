@@ -14,7 +14,7 @@ const ThreadBox = props => {
             <p className="post-name">
                 <Link to={`./forums/${thread.id}`}>{thread.postName}</Link>
             </p>
-            <p className="reply-count">{thread.replyCount}</p>
+            <p className="reply-count">{thread.replies.length}</p>
             <p className="creator">{thread.creator}</p>
         </div>
     )

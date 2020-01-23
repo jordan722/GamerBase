@@ -12,7 +12,6 @@ class ForumContainer extends Component {
     this.state = {
       last_updated: "",
       post_name: "",
-      reply_count: "",
       creater: "",
       toggle: true
     };
@@ -24,7 +23,6 @@ class ForumContainer extends Component {
     this.setState({
       last_updated: "Just ",
       post_name: "Submit",
-      reply_count: this.state.reply_count,
       creater: this.state.creater
     });
   }
@@ -44,10 +42,9 @@ class ForumContainer extends Component {
   handleSubmit = event => {
     event.preventDefault();
     let thread = {
-      id: 3,
+      id: this.props.allThreads.length + 1,
       last_updated: this.state.last_updated,
       post_name: this.state.post_name,
-      reply_count: this.state.reply_count,
       creater: this.state.creater
     };
     this.props.addThread(thread);
@@ -74,6 +71,7 @@ class ForumContainer extends Component {
     let forumDisplay = undefined;
     let threadBoxes = undefined;
 
+<<<<<<< HEAD
     //outputs information if no threads exist
     if (allThreads !== undefined && allThreads.length === 0) {
       forumDisplay = <div> No threads currently exist </div>;
@@ -85,6 +83,22 @@ class ForumContainer extends Component {
       });
       forumDisplay = <ForumView threadBoxes={threadBoxes} />;
     }
+=======
+        //outputs information if no threads exist
+        if(allThreads !== undefined && allThreads.length === 0){
+            forumDisplay = <div> No threads currently exist </div>
+        }else if(allThreads !== undefined){
+            //console.log(allThreads);
+            threadBoxes = allThreads.map(singleThread => {
+                //console.log(singleThread)
+                return <ThreadBox key={singleThread.id} thread={singleThread}/>
+                }
+            )
+            forumDisplay = <ForumView threadBoxes={threadBoxes}/>
+        }else{
+          forumDisplay = <div> Could not fetch threads from databse</div>
+        }
+>>>>>>> Added ability to add replies to threads & track reply count
 
     let displayAll = this.display();
     const currToggle = this.state.toggle;
