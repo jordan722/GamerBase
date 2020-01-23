@@ -6,23 +6,26 @@ import HomeView from "./HomeView";
 
 import { getHomeGamesThunk } from "../../actions";
 
-const MenuItem = ({ img, selected, name }) => {
+const MenuItem = ({ img, selected, name, id }) => {
 	return (
-		<div className={`menu-item ${selected}`}>
-			<img src={img} />
-			<p>{name}</p>
-		</div>
+		<a href={`/games/${id}`}>
+			<div className={`menu-item ${selected}`}>
+				<img src={img} />
+				<p>{name}</p>
+			</div>
+		</a>
 	);
 };
 
 export const Menu = (list, selected) =>
 	list.map(el => {
-		const { name, background_image } = el;
+		const { name, background_image, id } = el;
 
 		return (
 			<MenuItem
 				img={background_image}
 				name={name}
+				id={id}
 				key={name}
 				selected={selected}
 			/>
