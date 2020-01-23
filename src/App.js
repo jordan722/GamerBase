@@ -19,6 +19,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				<base href="http://localhost:3000/"></base>
 				<Router basename="">
 					<NavBar />
 					<div className="app-h">
