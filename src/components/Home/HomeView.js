@@ -5,14 +5,22 @@ import "./Home.css";
 //
 
 const HomeView = props => {
-  const { state, menu, onUpdate, ArrowLeft, ArrowRight } = props;
+  const {
+    state,
+    onUpdate,
+    ArrowLeft,
+    ArrowRight,
+    trending,
+    upcoming,
+    toprated
+  } = props;
 
   return (
     <div>
       <h2 className="Heading"> Trending Games </h2>
       <div className="scroll">
         <ScrollMenu
-          data={menu}
+          data={trending}
           arrowLeft={ArrowLeft}
           arrowRight={ArrowRight}
           hideArrows={state.hideArrows}
@@ -29,20 +37,20 @@ const HomeView = props => {
           wheel={state.wheel}
         />
       </div>
-      <h2 className="Heading">Top 100</h2>
+      <h2 className="Heading">Top Rated</h2>
       <div className="scroll">
         <ScrollMenu
-          data={menu}
+          data={toprated}
           arrowLeft={ArrowLeft}
           arrowRight={ArrowRight}
           hideArrows={state.hideArrows}
           hideSingleArrow={state.hideSingleArrow}
           transition={+state.transition}
           onUpdate={onUpdate}
-          onSelect={state.tip100OnSelect}
-          setSelected={state.top100SetSelected}
-          selected={state.top100Selected}
-          translate={state.top100translate}
+          onSelect={state.topratedOnSelect}
+          setSelected={state.topratedSetSelected}
+          selected={state.topratedSelected}
+          translate={state.topratedtranslate}
           alignCenter={state.alignCenter}
           scrollToSelected={true}
           dragging={state.dragging}
@@ -52,7 +60,7 @@ const HomeView = props => {
       <h2 className="Heading">Upcoming</h2>
       <div className="scroll">
         <ScrollMenu
-          data={menu}
+          data={upcoming}
           arrowLeft={ArrowLeft}
           arrowRight={ArrowRight}
           hideArrows={state.hideArrows}

@@ -4,48 +4,45 @@ import {
   GET_TWITCH,
   GET_MIXER,
   GET_YOUTUBE
-} from './actionTypes';
+} from "./actionTypes";
 
-import axios from 'axios';
-
+import axios from "axios";
 
 // Action creators
 const getHomeGames = games => {
-  return{
+  return {
     type: GET_HOME_GAMES,
     payload: games
   };
 };
 
 const getGame = game => {
-  return{
+  return {
     type: GET_GAME,
     payload: game
   };
 };
 
 const getTwitch = twitch => {
-  return{
+  return {
     type: GET_TWITCH,
-    payload: twitch,
-  }
-}
+    payload: twitch
+  };
+};
 
 const getMixer = mixer => {
-  return{
+  return {
     type: GET_MIXER,
-    payload: mixer,
-  }
-}
+    payload: mixer
+  };
+};
 
 const getYoutube = youtube => {
-  return{
+  return {
     type: GET_YOUTUBE,
-    payload: youtube,
-  }
-}
-
-
+    payload: youtube
+  };
+};
 
 // Thunks
 export const getHomeGamesThunk = () => async dispatch => {
@@ -57,7 +54,7 @@ export const getHomeGamesThunk = () => async dispatch => {
       trending: trending,
       toprated: toprated,
       upcoming: upcoming
-    }
+    };
     dispatch(getHomeGames(res));
   } catch (err) {
     console.log(err);
@@ -65,37 +62,37 @@ export const getHomeGamesThunk = () => async dispatch => {
 };
 
 export const getGameThunk = gameId => async dispatch => {
-  try{
+  try {
     const res = await axios.get(`/api/rawg/${gameId}`);
     dispatch(getGame(res.data));
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 export const getTwitchThunk = name => async dispatch => {
-  try{
+  try {
     const res = await axios.get(`/api/twitch/streams?gameName=${name}`);
     dispatch(getTwitch(res.data));
-  } catch (err){
+  } catch (err) {
     console.log(err);
   }
-}
+};
 
 export const getMixerThunk = name => async dispatch => {
-  try{
+  try {
     const res = await axios.get(`/api/mixer/streams?gameName=${name}`);
     dispatch(getMixer(res.data));
-  } catch (err){
+  } catch (err) {
     console.log(err);
   }
-}
+};
 
 export const getYoutubeThunk = name => async dispatch => {
-  try{
+  try {
     const res = await axios.get(`/api/youtube/streams?gameName=${name}`);
     dispatch(getYoutube(res.data));
-  } catch (err){
+  } catch (err) {
     console.log(err);
   }
-}
+};

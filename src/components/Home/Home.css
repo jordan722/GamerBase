@@ -33,3 +33,8 @@ div.menu-wrapper {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
 }
+
+img {
+  width: 200px;
+  height: 200px;
+}

@@ -6,34 +6,6 @@ import HomeView from "./HomeView";
 
 import { getHomeGamesThunk } from "../../actions";
 
-const list = [
-  {
-    name: "League of Legends",
-    img:
-      "https://i.pinimg.com/originals/68/4e/df/684edf3c1cddd4bee8316a21ff426057.png"
-  },
-  {
-    name: "Fortnite",
-    img:
-      "https://gamepedia.cursecdn.com/fortnite_gamepedia/archive/6/64/20190303040235%21Favicon.ico"
-  },
-  {
-    name: "Clash of Clans",
-    img:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/8c/f8/f6/8cf8f6ff-a555-ff7b-6f1b-1356d267e80c/source/256x256bb.jpg"
-  },
-  {
-    name: "Megaman Zero",
-    img:
-      "https://upload.wikimedia.org/wikipedia/en/9/92/Mega_Man_Zero_cover.jpg"
-  },
-  {
-    name: "Mario Party Advance",
-    img:
-      "https://m.media-amazon.com/images/M/MV5BZWE3YmZkMTctZmZiOC00Mzc3LWEyNjQtYjIwYjRlMzVjYmQ0L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjg3MDM4Mzc@._V1_.jpg"
-  }
-];
-
 const MenuItem = ({ img, selected }) => {
   return (
     <div className={`menu-item ${selected}`}>
@@ -44,9 +16,9 @@ const MenuItem = ({ img, selected }) => {
 
 export const Menu = (list, selected) =>
   list.map(el => {
-    const { name, img } = el;
+    const { name, background_image } = el;
 
-    return <MenuItem img={img} key={name} selected={selected} />;
+    return <MenuItem img={background_image} key={name} selected={selected} />;
   });
 
 const Arrow = ({ text, className }) => {
@@ -67,17 +39,16 @@ class Home extends Component {
     dragging: false,
     hideArrows: true,
     hideSingleArrow: true,
-    itemsCount: list.length,
     selected: "item1",
     translate: 0,
     trendingOnSelect: "",
     trendingSetSelected: "",
-    top100OnSelect: "",
-    top100SetSelected: "",
+    topratedOnSelect: "",
+    topratedSetSelected: "",
     upcomingOnSelect: "",
     upcomingSetSelected: "",
     upcomingTranslate: 0,
-    top100Translate: 0,
+    topratedTranslate: 0,
     trendingTranslate: 0,
     transition: 0.3,
     wheel: false
@@ -85,9 +56,14 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
-    props.getHomeGames();
-    this.menu = null;
-    this.menuItems = Menu(list, this.state.selected);
+  }
+
+  async componentDidMount(props) {
+    await this.props.getHomeGames();
+    //console.log(this.props.results);
+    //this.props.menuTrendingItems = Menu(this.results, this.state.selected);
+    //this.props.menutopratedItems = Menu(this.results, this.state.selected);
+    //this.menuUpcomingItems = Menu(this.game.upcoming, this.state.selected);
   }
 
   onUpdate = ({ translate }) => {
@@ -107,28 +83,33 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-        <HomeView
-          state={this.state}
-          trending={this.props.trending}
-          toprated={this.props.toprated}
-          upcoming={this.props.upcoming}
-          menu={this.menuItems}
-          onUpdate={this.onUpdate}
-          onSelect={this.onSelect}
-          setSelected={this.setSelected}
-          ArrowLeft={ArrowLeft}
-          ArrowRight={ArrowRight}
-        />
+        {this.props.trending && this.props.toprated && this.props.upcoming && (
+          <HomeView
+            state={this.state}
+            trending={Menu(this.props.trending, 1)}
+            toprated={Menu(this.props.toprated, 1)}
+            upcoming={Menu(this.props.upcoming, 1)}
+            menu={this.menuItems}
+            onUpdate={this.onUpdate}
+            onSelect={this.onSelect}
+            setSelected={this.setSelected}
+            ArrowLeft={ArrowLeft}
+            ArrowRight={ArrowRight}
+          />
+        )}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  trending: state.game.trending,
-  toprated: state.game.toprated,
-  upcoming: state.game.upcoming
-});
+const mapStateToProps = state => {
+  console.log("HELLO ", state.game);
+  return {
+    trending: state.game.trending.results,
+    toprated: state.game.toprated.results,
+    upcoming: state.game.upcoming.results
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   getHomeGames: () => dispatch(getHomeGamesThunk())
