@@ -34,7 +34,7 @@ class NavBar extends Component {
 				<Link className="logo" to="/">
 					Fake Twitch
 				</Link>
-				<Link className="login" to="/forums" style={{ float: "left" }}>
+				<Link className="login" to="/forums" style={{ float: "right" }}>
 					Forums
 				</Link>
 				{this.props.isLoggedIn ? loggedInView : loggedOutView}
