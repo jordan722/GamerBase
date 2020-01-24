@@ -55,8 +55,11 @@ export const GetThreadThunk = threadId => async dispatch => {
 
 export const AddThreadThunk = thread => async dispatch => {
 	try {
-		await axios.post("/api/posts", thread);
-		dispatch(addThread(thread));
+		let newThread = await axios.post(`/api/posts`, thread);
+		const user = await axios.get(`/api/users/${thread.userId}`);
+		newThread = newThread.data;
+		newThread.user = user.data;
+		dispatch(addThread(newThread));
 	} catch (err) {
 		console.log(err);
 	}

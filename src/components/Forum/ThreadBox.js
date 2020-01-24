@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const threadBox = props => {
 	const { thread } = props;
 
+	console.log("box", thread);
+
 	let replyCount = 0;
 
 	if (thread.replies) {

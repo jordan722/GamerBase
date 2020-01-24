@@ -53,7 +53,7 @@ class ForumContainer extends Component {
 	render() {
 		//assumes all threads is an array
 		const { allThreads } = this.props;
-		console.log(allThreads);
+		console.log("allThreads", allThreads);
 		let forumDisplay = undefined;
 		let threadBoxes = undefined;
 
