@@ -41,6 +41,13 @@ img {
   height: auto;
 }
 
-p {
+.text {
+  margin-left: 10px;
   font-size: 20px;
+  color: white;
+}
+
+.box-blue {
+  margin: 10px;
+  transition: all 0.3s ease-out;
 }
