@@ -8,7 +8,7 @@ import {
 
 import axios from "axios";
 
-import BASE_URL from "../url";
+const BASE_URL = process.env.BASE_URL;
 
 // Action creators
 const getHomeGames = games => {

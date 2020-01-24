@@ -7,7 +7,7 @@ import {
 	ADD_THREAD_REPLY
 } from "./actionTypes";
 
-import BASE_URL from "../url";
+const BASE_URL = process.env.BASE_URL;
 
 const getThread = thread => {
 	return {

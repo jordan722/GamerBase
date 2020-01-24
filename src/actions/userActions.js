@@ -1,7 +1,7 @@
 import { ADD_USER, GET_USER, LOGIN, LOGOUT } from "./actionTypes";
 import axios from "axios";
 
-import BASE_URL from "../url";
+const BASE_URL = process.env.BASE_URL;
 
 // Action creator
 const getUser = user => {
