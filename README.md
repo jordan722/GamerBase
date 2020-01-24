@@ -15,7 +15,7 @@ npm start
 
 # Link to Deployed Web-App
 
-This web app was deployed using heroku, and can be accessed [here!](http://gamerbase.herokuapp.com/)
+[This web app was deployed using heroku, and can be accessed here!](http://gamerbase.herokuapp.com/)
 
 
 # Home Page
