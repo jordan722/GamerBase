@@ -9,12 +9,12 @@ import { getHomeGamesThunk } from "../../actions";
 
 const MenuItem = ({ img, selected, name, id }) => {
 	return (
-		<Link to={`/games/${id}`}>
-			<div className={`menu-item ${selected}`}>
-				<img alt="game" src={img} />
-				<p>{name}</p>
-			</div>
-		</Link>
+		<div style={{ display: "inline-block" }} key={id}>
+			<Link to={`/games/${id}`}>
+				<img className="box-blue" src={img} alt="game thumbnail" />
+				<div className="text">{name}</div>
+			</Link>
+		</div>
 	);
 };
 
@@ -67,7 +67,7 @@ class Home extends Component {
 	};
 
 	async componentDidMount(props) {
-		if(!this.props.trending){
+		if (!this.props.trending) {
 			await this.props.getHomeGames();
 		}
 	}
@@ -109,7 +109,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-	console.log("HELLO ", state.game);
 	return {
 		trending: state.game.trending.results,
 		toprated: state.game.toprated.results,

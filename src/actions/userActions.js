@@ -1,6 +1,7 @@
 import { ADD_USER, GET_USER, LOGIN, LOGOUT } from "./actionTypes";
-
 import axios from "axios";
+
+import BASE_URL from "../url";
 
 // Action creator
 const getUser = user => {
@@ -33,7 +34,7 @@ const logout = () => {
 // Thunks
 export const getUserThunk = userId => async dispatch => {
 	try {
-		const res = await axios.get(`/api/users/${userId}`);
+		const res = await axios.get(`${BASE_URL}/api/users/${userId}`);
 		dispatch(getUser(res.data));
 	} catch (err) {
 		console.log(err);
@@ -47,7 +48,7 @@ export const addUserThunk = (name, email, password) => async dispatch => {
 			email: email,
 			password: password
 		};
-		const newUser = await axios.post(`/api/auth/signup`, body, {
+		const newUser = await axios.post(`${BASE_URL}/api/auth/signup`, body, {
 			withCredentials: true
 		});
 		dispatch(addUser(newUser.data));
@@ -62,7 +63,7 @@ export const loginThunk = (email, password) => async dispatch => {
 			email: email,
 			password: password
 		};
-		const user = await axios.post(`/api/auth/login`, body, {
+		const user = await axios.post(`${BASE_URL}/api/auth/login`, body, {
 			withCredentials: true
 		});
 		dispatch(login(user.data));
@@ -73,7 +74,7 @@ export const loginThunk = (email, password) => async dispatch => {
 
 export const logoutThunk = () => async dispatch => {
 	try {
-		await axios.delete(`/api/auth/logout`, {
+		await axios.delete(`${BASE_URL}/api/auth/logout`, {
 			withCredentials: true
 		});
 		dispatch(logout());
@@ -84,7 +85,7 @@ export const logoutThunk = () => async dispatch => {
 
 export const me = () => async dispatch => {
 	try {
-		const res = await axios.get(`/api/auth/me`, {
+		const res = await axios.get(`${BASE_URL}/api/auth/me`, {
 			withCredentials: true
 		});
 		dispatch(login(res.data || {}));

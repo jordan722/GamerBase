@@ -7,6 +7,8 @@ import {
 	ADD_THREAD_REPLY
 } from "./actionTypes";
 
+import BASE_URL from "../url";
+
 const getThread = thread => {
 	return {
 		type: GET_THREAD,
@@ -37,7 +39,7 @@ const addThreadReply = updateThread => {
 
 export const GetThreadsThunk = () => async dispatch => {
 	try {
-		const res = await axios.get("/api/posts");
+		const res = await axios.get(`${BASE_URL}/api/posts`);
 		dispatch(getThreads(res.data));
 	} catch (err) {
 		console.log(err);
@@ -46,7 +48,7 @@ export const GetThreadsThunk = () => async dispatch => {
 
 export const GetThreadThunk = threadId => async dispatch => {
 	try {
-		const res = await axios.get(`/api/posts/${threadId}`);
+		const res = await axios.get(`${BASE_URL}/api/posts/${threadId}`);
 		dispatch(getThread(res.data));
 	} catch (err) {
 		console.log(err);
@@ -55,8 +57,8 @@ export const GetThreadThunk = threadId => async dispatch => {
 
 export const AddThreadThunk = thread => async dispatch => {
 	try {
-		let newThread = await axios.post(`/api/posts`, thread);
-		const user = await axios.get(`/api/users/${thread.userId}`);
+		let newThread = await axios.post(`${BASE_URL}/api/posts`, thread);
+		const user = await axios.get(`${BASE_URL}/api/users/${thread.userId}`);
 		newThread = newThread.data;
 		newThread.user = user.data;
 		dispatch(addThread(newThread));
@@ -70,7 +72,7 @@ export const AddThreadReplyThunk = (
 	threadReply
 ) => async dispatch => {
 	try {
-		const res = await axios.get(`/api/posts/${threadId}`);
+		const res = await axios.get(`${BASE_URL}/api/posts/${threadId}`);
 
 		let currThread = res.data;
 
@@ -82,9 +84,9 @@ export const AddThreadReplyThunk = (
 			newThreadReplies = { replies: [threadReply] };
 		}
 
-		await axios.put(`/api/posts/${threadId}`, newThreadReplies);
+		await axios.put(`${BASE_URL}/api/posts/${threadId}`, newThreadReplies);
 
-		const newThread = await axios.get(`/api/posts/${threadId}`);
+		const newThread = await axios.get(`${BASE_URL}/api/posts/${threadId}`);
 
 		dispatch(addThreadReply(newThread.data));
 	} catch (err) {

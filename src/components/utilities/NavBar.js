@@ -15,7 +15,9 @@ class NavBar extends Component {
 					<LinkButton className="sign-up" onClick={this.props.logout} to="/">
 						Log Out
 					</LinkButton>
-					<p style={{ float: "right", margin:'12px', fontSize:'14px'}}>Logged in as: {this.props.loggedInUser.name}</p>
+					<p style={{ float: "right", margin: "12px", fontSize: "14px" }}>
+						Logged in as: {this.props.loggedInUser.name}
+					</p>
 				</div>
 			);
 		}
@@ -24,7 +26,7 @@ class NavBar extends Component {
 				<Link className="sign-up" to="/signup">
 					Sign Up
 				</Link>
-				<Link className="login" to="/login">
+				<Link className="sign-up" to="/login">
 					Log In
 				</Link>
 			</div>
