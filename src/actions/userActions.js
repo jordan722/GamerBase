@@ -1,7 +1,7 @@
 import { ADD_USER, GET_USER, LOGIN, LOGOUT } from "./actionTypes";
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 // Action creator
 const getUser = user => {
@@ -85,6 +85,8 @@ export const logoutThunk = () => async dispatch => {
 
 export const me = () => async dispatch => {
 	try {
+		console.log("base", BASE_URL);
+		console.log("process", process.env);
 		const res = await axios.get(`${BASE_URL}/api/auth/me`, {
 			withCredentials: true
 		});
