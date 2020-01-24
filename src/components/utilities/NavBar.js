@@ -34,7 +34,7 @@ class NavBar extends Component {
 		return (
 			<div className="navbar">
 				<Link className="logo" to="/">
-					Fake Twitch
+					GamerBase
 				</Link>
 				<Link className="login" to="/forums" style={{ float: "right" }}>
 					Forums
