@@ -96,7 +96,7 @@ class ForumContainer extends Component {
 		return (
 			<div>
 				{forumDisplay}
-				<div>
+				<div style={{marginTop:'20px'}}>
 					{this.props.isLoggedIn
 						? this.state.toggle
 							? toggledView
