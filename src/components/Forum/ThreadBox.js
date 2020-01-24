@@ -15,14 +15,14 @@ const threadBox = props => {
 
 	return (
 		<tr>
+			<Link to={`./forums/${thread.id}`}>
 			<td style={{float:'left', padding:'5px'}}>
 				<div style={{textAlign:'left', justifyContent:'left'}}>
-				<Link to={`./forums/${thread.id}`} style={{fontSize:'20px', color:'white'}}>
-					{thread.title}
-				</Link>
-				<p style={{fontSize:'12px'}}> Last Updated: {thread.lastUpdated} </p>
+				<p style={{fontSize:'22px', color:'white', margin:0}}>	{thread.title} </p>
+				<p style={{fontSize:'12px', color:'white',margin:0}}> Last Updated: {thread.lastUpdated} </p>
 				</div>
 			</td>
+			</Link>
 			<td>{thread.user.name}</td>
 			<td> {replyCount} </td>
 		</tr>

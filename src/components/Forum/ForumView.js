@@ -8,7 +8,7 @@ const ForumView = props => {
     <div>
       <p style={{color:'white', fontSize:'40px', paddingTop:"80px", fontWeight: 'bold'}}> Forum </p>
 
-      <div style={{backgroundColor: '#18181b', width:'90%', borderRadius:'10px', margin:'auto', paddingTop:'20px', paddingBottom:'20px'}}>
+      <div style={{backgroundColor: '#18181b', width:'90%', borderRadius:'10px', margin:'auto', paddingTop:'20px', paddingBottom:'20px', boxShadow: '0 0 10px black'}}>
         <table id="threads">
           <tr style={{fontSize:'26px'}}>
             <th> Topic </th>
