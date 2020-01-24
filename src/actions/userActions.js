@@ -1,8 +1,7 @@
 import { ADD_USER, GET_USER, LOGIN, LOGOUT } from "./actionTypes";
-
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL;
+import BASE_URL from "../url";
 
 // Action creator
 const getUser = user => {
@@ -89,7 +88,6 @@ export const me = () => async dispatch => {
 		const res = await axios.get(`${BASE_URL}/api/auth/me`, {
 			withCredentials: true
 		});
-		console.log(res.data);
 		dispatch(login(res.data || {}));
 	} catch (err) {
 		console.error(err);

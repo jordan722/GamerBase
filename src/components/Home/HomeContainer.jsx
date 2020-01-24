@@ -67,7 +67,7 @@ class Home extends Component {
 	};
 
 	async componentDidMount(props) {
-		if(!this.props.trending){
+		if (!this.props.trending) {
 			await this.props.getHomeGames();
 		}
 	}
@@ -109,7 +109,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-	console.log("HELLO ", state.game);
 	return {
 		trending: state.game.trending.results,
 		toprated: state.game.toprated.results,
