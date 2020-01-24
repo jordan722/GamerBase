@@ -18,7 +18,6 @@ class ThreadContainer extends Component {
 
 	async componentDidMount() {
 		await this.props.getThread(this.props.match.params.threadId);
-		console.log("looking for thread");
 	}
 
 	handleOnChange = event => {
@@ -81,8 +80,13 @@ class ThreadContainer extends Component {
 
 			threadRender = (
 				<div style={{ paddingTop: "100px" }}>
-					{this.props.currThread.title}
+					<div style={{backgroundColor:'#18181b', width:'90%', borderRadius:'10px', margin:'auto', marginBottom: '20px', paddingTop:'5px', paddingBottom:'5px', boxShadow: '0 0 10px black'}}>
+						<p style={{margin:0, fontSize:'20px'}}> {this.props.currThread.title} </p>
+						<p style={{margin:0, fontSize:'12px'}}> Created by {this.props.currThread.user.name} on this {this.props.currThread.createdAt.slice(0,10)} </p>
+					</div>
+					<div style={{backgroundColor:'#18181b', width:'90%', borderRadius:'10px', margin:'auto', marginBottom: '20px', paddingTop:'5px', paddingBottom:'5px', boxShadow: '0 0 10px black'}}>
 					{threadReplies}
+					</div>
 					{this.props.isLoggedIn
 						? this.state.toggle
 							? toggledView
@@ -93,7 +97,13 @@ class ThreadContainer extends Component {
 		} else {
 			threadRender = (
 				<div style={{ paddingTop: "100px" }}>
-					{this.props.currThread.title}
+					<div style={{backgroundColor:'#18181b', width:'90%', borderRadius:'10px', margin:'auto', marginBottom: '20px', paddingTop:'5px', paddingBottom:'5px', boxShadow: '0 0 10px black'}}>
+						<p style={{margin:0, fontSize:'20px'}}> {this.props.currThread.title} </p>
+						<p style={{margin:0, fontSize:'12px'}}> Created by {this.props.currThread.user.name} on this {this.props.currThread.createdAt.slice(0,10)} </p>
+					</div>
+					<div id="replies" style={{backgroundColor:'#18181b', width:'70%', borderRadius:'10px', margin:'auto', marginBottom: '20px', paddingTop:'5px', paddingBottom:'5px', boxShadow: '0 0 10px black'}}>
+						{threadReplies}
+					</div>
 					{this.props.isLoggedIn
 						? this.state.toggle
 							? toggledView

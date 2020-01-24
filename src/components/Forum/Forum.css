@@ -9,6 +9,8 @@
 
 #threads tr:nth-child(even){background-color: black;}
 
+#replies div:nth-child(even){background-color: black;}
+
 #threads tr:hover {
   background-color: #3c3c44;
 }

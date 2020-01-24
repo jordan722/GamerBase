@@ -5,9 +5,9 @@ const ThreadView = props => {
 	const { reply } = props;
 
 	return (
-		<div id="reply">
-			<p className="reply-box">{reply.userId}</p>
-			<p className="reply-box">{reply.title}</p>
+		<div style={{margin:'auto', marginBottom:'5px', padding: '10px', textAlign:'left'}}>
+			<p style={{fontSize:'14px', margin:0}}>User: {reply.userId}</p>
+			<p style={{fontSize:'16px', margin:0}}>{reply.title}</p>
 		</div>
 	);
 };
