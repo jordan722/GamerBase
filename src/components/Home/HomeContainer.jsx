@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Home.css";
 import HomeView from "./HomeView";
@@ -8,12 +9,12 @@ import { getHomeGamesThunk } from "../../actions";
 
 const MenuItem = ({ img, selected, name, id }) => {
 	return (
-		<a href={`/games/${id}`}>
+		<Link to={`/games/${id}`}>
 			<div className={`menu-item ${selected}`}>
 				<img alt="game" src={img} />
 				<p>{name}</p>
 			</div>
-		</a>
+		</Link>
 	);
 };
 
