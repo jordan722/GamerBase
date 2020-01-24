@@ -103,7 +103,7 @@ class ThreadContainer extends Component {
 							{this.props.currThread.title}
 						</p>
 						<p style={{ margin: 0, fontSize: "12px" }}>
-							Created by {this.props.currThread.user.name} on this
+							Created by {this.props.currThread.user.name} on
 							{this.props.currThread.createdAt.slice(0, 10)}
 						</p>
 					</div>
@@ -122,11 +122,15 @@ class ThreadContainer extends Component {
 						{threadReplies}
 					</div>
 					<div>
-						{this.props.isLoggedIn
-							? this.state.toggle
-								? toggledView
-								: unToggledView
-							: ""}
+						{this.props.isLoggedIn ? (
+							this.state.toggle ? (
+								toggledView
+							) : (
+								unToggledView
+							)
+						) : (
+							<p style={{ fontSize: "20px" }}>Login to add a reply!</p>
+						)}
 					</div>
 				</div>
 			);
@@ -169,15 +173,11 @@ class ThreadContainer extends Component {
 						{threadReplies}
 					</div>
 					<div>
-						{this.props.isLoggedIn ? (
-							this.state.toggle ? (
-								toggledView
-							) : (
-								unToggledView
-							)
-						) : (
-							<p style={{ fontSize: "20px" }}>Login to add a reply!</p>
-						)}
+						{this.props.isLoggedIn
+							? this.state.toggle
+								? toggledView
+								: unToggledView
+							: ""}
 					</div>
 				</div>
 			);
