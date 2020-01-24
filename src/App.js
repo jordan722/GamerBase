@@ -1,40 +1,23 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import "./App.css";
 
-import {
-	Home,
-	NavBar,
-	Game,
-	AddUser,
-	EditUser,
-	SingleUser,
-	Forum,
-	Thread,
-	Login,
-	Signup
-} from "./components";
+import { Home, NavBar, Game, Forum, Thread, Login, Signup } from "./components";
+
+import { me } from "./actions";
 
 class App extends Component {
+	componentDidMount() {
+		this.props.loadInitialData();
+	}
 	render() {
 		return (
 			<div className="App">
-				<base href="http://localhost:3000/"></base>
 				<Router basename="">
 					<NavBar />
 					<div className="app-h">
 						<Route exact path="/" render={() => <Home />} />
-						<Route
-							exact
-							path="/users/:userId"
-							render={props => <SingleUser {...props} />}
-						/>
-						<Route exact path="/users/add-user" render={() => <AddUser />} />
-						<Route
-							exact
-							path="/users/:userid/edit-user"
-							render={props => <EditUser {...props} />}
-						/>
 						<Route exact path="/forums" render={() => <Forum />} />
 						<Route
 							exact
@@ -51,4 +34,10 @@ class App extends Component {
 	}
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+	return {
+		loadInitialData: () => dispatch(me())
+	};
+};
+
+export default connect(null, mapDispatchToProps)(App);
