@@ -71,8 +71,7 @@ class ThreadContainer extends Component {
 		let unToggledView = (
 			<div>
 				<button className="forum-buttons" onClick={this.handleToggle}>
-					{" "}
-					Reply{" "}
+					Reply
 				</button>
 			</div>
 		);
@@ -101,13 +100,11 @@ class ThreadContainer extends Component {
 						}}
 					>
 						<p style={{ margin: 0, fontSize: "20px" }}>
-							{" "}
-							{this.props.currThread.title}{" "}
+							{this.props.currThread.title}
 						</p>
 						<p style={{ margin: 0, fontSize: "12px" }}>
-							{" "}
-							Created by {this.props.currThread.user.name} on this{" "}
-							{this.props.currThread.createdAt.slice(0, 10)}{" "}
+							Created by {this.props.currThread.user.name} on this
+							{this.props.currThread.createdAt.slice(0, 10)}
 						</p>
 					</div>
 					<div
@@ -124,11 +121,13 @@ class ThreadContainer extends Component {
 					>
 						{threadReplies}
 					</div>
-					{this.props.isLoggedIn
-						? this.state.toggle
-							? toggledView
-							: unToggledView
-						: ""}
+					<div>
+						{this.props.isLoggedIn
+							? this.state.toggle
+								? toggledView
+								: unToggledView
+							: ""}
+					</div>
 				</div>
 			);
 		} else {
@@ -147,13 +146,11 @@ class ThreadContainer extends Component {
 						}}
 					>
 						<p style={{ margin: 0, fontSize: "20px" }}>
-							{" "}
-							{this.props.currThread.title}{" "}
+							{this.props.currThread.title}
 						</p>
 						<p style={{ margin: 0, fontSize: "12px" }}>
-							{" "}
-							Created by {this.props.currThread.user.name} on this{" "}
-							{this.props.currThread.createdAt.slice(0, 10)}{" "}
+							Created by {this.props.currThread.user.name} on this
+							{this.props.currThread.createdAt.slice(0, 10)}
 						</p>
 					</div>
 					<div
@@ -171,11 +168,17 @@ class ThreadContainer extends Component {
 					>
 						{threadReplies}
 					</div>
-					{this.props.isLoggedIn
-						? this.state.toggle
-							? toggledView
-							: unToggledView
-						: ""}
+					<div>
+						{this.props.isLoggedIn ? (
+							this.state.toggle ? (
+								toggledView
+							) : (
+								unToggledView
+							)
+						) : (
+							<p style={{ fontSize: "20px" }}>Login to add a reply!</p>
+						)}
+					</div>
 				</div>
 			);
 		}

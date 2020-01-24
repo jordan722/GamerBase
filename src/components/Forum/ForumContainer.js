@@ -100,12 +100,12 @@ class ForumContainer extends Component {
 		return (
 			<div>
 				{forumDisplay}
-				<div style={{ marginTop: "20px" }}>
+				<div style={{ marginTop: "20px", fontSize: "20px" }}>
 					{this.props.isLoggedIn
 						? this.state.toggle
 							? toggledView
 							: unToggledView
-						: ""}
+						: "Login to add a post!"}
 				</div>
 			</div>
 		);
