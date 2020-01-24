@@ -23,7 +23,7 @@ class NavBar extends Component {
 				<Link className="sign-up" to="/signup">
 					Sign Up
 				</Link>
-				<Link className="login" to="/login">
+				<Link className="sign-up" to="/login">
 					Log In
 				</Link>
 			</div>
