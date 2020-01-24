@@ -1,22 +1,9 @@
-/*
-.page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.login-container {
-  padding: 150px;
-  margin-top: 150px;
-  background-color: #18181b;
-  width: 50vw;
-}
-*/
-label {
+label,
+big {
   width: 100px;
   display: inline-block;
   font-size: 20px;
+  font-family: Monospace;
 }
 
 .email,
@@ -44,4 +31,8 @@ input {
 
 .signup {
   padding-top: 10px;
+}
+
+small {
+  font-size: 20px;
 }

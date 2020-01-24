@@ -14,18 +14,13 @@
   display: block;
   color: white;
   text-align: center;
-  padding: 10px 10px;
+  padding: 5px 10px;
   text-decoration: none;
   font-size: 30px;
   font-weight: bold;
-  text-shadow: -0.5px 0.5px 0px #8545e1,
-    -1px 1px 0px #8545e1,
-    -1.5px 1.5px 0px #8545e1,
-    -2px 2px 0px #8545e1,
-    -2.5px 2.5px 0px #8545e1,
-    -3px 3px 0px #8545e1,
-    -3.5px 3.5px 0px #8545e1,
-    -4px 4px 0px #8545e1;
+  text-shadow: -0.5px 0.5px 0px #8545e1, -1px 1px 0px #8545e1,
+    -1.5px 1.5px 0px #8545e1, -2px 2px 0px #8545e1, -2.5px 2.5px 0px #8545e1,
+    -3px 3px 0px #8545e1, -3.5px 3.5px 0px #8545e1, -4px 4px 0px #8545e1;
 }
 
 .sign-up {
