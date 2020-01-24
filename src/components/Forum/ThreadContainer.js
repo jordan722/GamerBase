@@ -10,7 +10,7 @@ class ThreadContainer extends Component {
 		super(props);
 
 		this.state = {
-			postContent: "w00t w00t",
+			postContent: "",
 			isEdited: false,
 			toggle: false
 		};
@@ -58,15 +58,22 @@ class ThreadContainer extends Component {
 					name="postContent"
 					value={this.state.postContent}
 					onChange={this.handleOnChange}
-					style={{ color: "black" }}
+					className="text-box-forum"
 				></textarea>
-				<button onClick={this.handleSubmit}>submit</button>
+				<div>
+					<button className="forum-buttons" onClick={this.handleSubmit}>
+						submit
+					</button>
+				</div>
 			</div>
 		);
 
 		let unToggledView = (
 			<div>
-				<button onClick={this.handleToggle}> Reply </button>
+				<button className="forum-buttons" onClick={this.handleToggle}>
+					{" "}
+					Reply{" "}
+				</button>
 			</div>
 		);
 
@@ -81,12 +88,41 @@ class ThreadContainer extends Component {
 
 			threadRender = (
 				<div style={{ paddingTop: "100px" }}>
-					<div style={{backgroundColor:'#18181b', width:'90%', borderRadius:'10px', margin:'auto', marginBottom: '20px', paddingTop:'5px', paddingBottom:'5px', boxShadow: '0 0 10px black'}}>
-						<p style={{margin:0, fontSize:'20px'}}> {this.props.currThread.title} </p>
-						<p style={{margin:0, fontSize:'12px'}}> Created by {this.props.currThread.user.name} on this {this.props.currThread.createdAt.slice(0,10)} </p>
+					<div
+						style={{
+							backgroundColor: "#18181b",
+							width: "90%",
+							borderRadius: "10px",
+							margin: "auto",
+							marginBottom: "20px",
+							paddingTop: "5px",
+							paddingBottom: "5px",
+							boxShadow: "0 0 10px black"
+						}}
+					>
+						<p style={{ margin: 0, fontSize: "20px" }}>
+							{" "}
+							{this.props.currThread.title}{" "}
+						</p>
+						<p style={{ margin: 0, fontSize: "12px" }}>
+							{" "}
+							Created by {this.props.currThread.user.name} on this{" "}
+							{this.props.currThread.createdAt.slice(0, 10)}{" "}
+						</p>
 					</div>
-					<div style={{backgroundColor:'#18181b', width:'90%', borderRadius:'10px', margin:'auto', marginBottom: '20px', paddingTop:'5px', paddingBottom:'5px', boxShadow: '0 0 10px black'}}>
-					{threadReplies}
+					<div
+						style={{
+							backgroundColor: "#18181b",
+							width: "90%",
+							borderRadius: "10px",
+							margin: "auto",
+							marginBottom: "20px",
+							paddingTop: "5px",
+							paddingBottom: "5px",
+							boxShadow: "0 0 10px black"
+						}}
+					>
+						{threadReplies}
 					</div>
 					{this.props.isLoggedIn
 						? this.state.toggle
@@ -98,11 +134,41 @@ class ThreadContainer extends Component {
 		} else {
 			threadRender = (
 				<div style={{ paddingTop: "100px" }}>
-					<div style={{backgroundColor:'#18181b', width:'90%', borderRadius:'10px', margin:'auto', marginBottom: '20px', paddingTop:'5px', paddingBottom:'5px', boxShadow: '0 0 10px black'}}>
-						<p style={{margin:0, fontSize:'20px'}}> {this.props.currThread.title} </p>
-						<p style={{margin:0, fontSize:'12px'}}> Created by {this.props.currThread.user.name} on this {this.props.currThread.createdAt.slice(0,10)} </p>
+					<div
+						style={{
+							backgroundColor: "#18181b",
+							width: "90%",
+							borderRadius: "10px",
+							margin: "auto",
+							marginBottom: "20px",
+							paddingTop: "5px",
+							paddingBottom: "5px",
+							boxShadow: "0 0 10px black"
+						}}
+					>
+						<p style={{ margin: 0, fontSize: "20px" }}>
+							{" "}
+							{this.props.currThread.title}{" "}
+						</p>
+						<p style={{ margin: 0, fontSize: "12px" }}>
+							{" "}
+							Created by {this.props.currThread.user.name} on this{" "}
+							{this.props.currThread.createdAt.slice(0, 10)}{" "}
+						</p>
 					</div>
-					<div id="replies" style={{backgroundColor:'#18181b', width:'70%', borderRadius:'10px', margin:'auto', marginBottom: '20px', paddingTop:'5px', paddingBottom:'5px', boxShadow: '0 0 10px black'}}>
+					<div
+						id="replies"
+						style={{
+							backgroundColor: "#18181b",
+							width: "70%",
+							borderRadius: "10px",
+							margin: "auto",
+							marginBottom: "20px",
+							paddingTop: "5px",
+							paddingBottom: "5px",
+							boxShadow: "0 0 10px black"
+						}}
+					>
 						{threadReplies}
 					</div>
 					{this.props.isLoggedIn
