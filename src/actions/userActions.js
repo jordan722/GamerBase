@@ -87,7 +87,6 @@ export const me = () => async dispatch => {
 		const res = await axios.get(`/api/auth/me`, {
 			withCredentials: true
 		});
-		console.log(res.data);
 		dispatch(login(res.data || {}));
 	} catch (err) {
 		console.error(err);

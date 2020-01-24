@@ -15,7 +15,6 @@ class ForumContainer extends Component {
 		};
 	}
 
-	//Dummy data
 	async componentDidMount() {
 		await this.props.getAllThreads();
 	}
@@ -54,7 +53,7 @@ class ForumContainer extends Component {
 	render() {
 		//assumes all threads is an array
 		const { allThreads } = this.props;
-		console.log(allThreads);
+		console.log("allThreads", allThreads);
 		let forumDisplay = undefined;
 		let threadBoxes = undefined;
 
@@ -69,7 +68,7 @@ class ForumContainer extends Component {
 			});
 			forumDisplay = <ForumView threadBoxes={threadBoxes} />;
 		} else {
-			forumDisplay = <div> Could not fetch threads from databse </div>;
+			forumDisplay = <div> Could not fetch threads from database </div>;
 		}
 
 		let toggledView = (
@@ -77,7 +76,7 @@ class ForumContainer extends Component {
 				<div>
 					<textarea
 						name="title"
-						placeholder="Enter question here!"
+						placeholder="Enter title here!"
 						value={this.state.title}
 						onChange={this.handleOnChange}
 						style={{ color: "black" }}
@@ -97,7 +96,7 @@ class ForumContainer extends Component {
 		return (
 			<div>
 				{forumDisplay}
-				<div>
+				<div style={{marginTop:'20px'}}>
 					{this.props.isLoggedIn
 						? this.state.toggle
 							? toggledView
