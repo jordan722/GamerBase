@@ -15,7 +15,6 @@ class ForumContainer extends Component {
 		};
 	}
 
-	//Dummy data
 	async componentDidMount() {
 		await this.props.getAllThreads();
 	}
@@ -69,7 +68,7 @@ class ForumContainer extends Component {
 			});
 			forumDisplay = <ForumView threadBoxes={threadBoxes} />;
 		} else {
-			forumDisplay = <div> Could not fetch threads from databse </div>;
+			forumDisplay = <div> Could not fetch threads from database </div>;
 		}
 
 		let toggledView = (
@@ -77,7 +76,7 @@ class ForumContainer extends Component {
 				<div>
 					<textarea
 						name="title"
-						placeholder="Enter question here!"
+						placeholder="Enter title here!"
 						value={this.state.title}
 						onChange={this.handleOnChange}
 						style={{ color: "black" }}

@@ -2,7 +2,7 @@ import React from "react";
 import "./Forum.css";
 import { Link } from "react-router-dom";
 
-const ThreadBox = props => {
+const threadBox = props => {
 	const { thread } = props;
 
 	let replyCount = 0;
@@ -12,18 +12,12 @@ const ThreadBox = props => {
 	}
 
 	return (
-		<div className="thread-box">
-			{
-				//Ideally would have display: flex  +  flex-direction: row
-			}
-			<p className="last-updated">{thread.lastUpdated}</p>
-			<p className="post-name">
-				<Link to={`./forums/${thread.id}`}>{thread.title}</Link>
-			</p>
-			<p className="reply-count">{replyCount}</p>
-			<p className="creator">{thread.user.name}</p>
-		</div>
+		<tr>
+			<td>	<Link to={`./forums/${thread.id}`}>{thread.title} {thread.lastUpdated}</Link> </td>
+			<td>{thread.user.name}</td>
+			<td> {replyCount} </td>
+		</tr>
 	);
 };
 
-export default ThreadBox;
+export default threadBox;
