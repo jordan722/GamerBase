@@ -66,7 +66,9 @@ class Home extends Component {
 	};
 
 	async componentDidMount(props) {
-		await this.props.getHomeGames();
+		if(!this.props.trending){
+			await this.props.getHomeGames();
+		}
 	}
 
 	onUpdate = ({ translate }) => {
