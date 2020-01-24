@@ -40,6 +40,7 @@ class ThreadContainer extends Component {
 
 		const reply = {
 			userId: this.props.user.id,
+			userName: this.props.user.name,
 			title: this.state.postContent,
 			threadId: this.props.match.params.threadId
 		};
