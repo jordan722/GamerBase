@@ -75,15 +75,19 @@ class ForumContainer extends Component {
 			<div>
 				<div>
 					<textarea
+						className="text-box-forum"
 						name="title"
 						placeholder="Enter title here!"
 						value={this.state.title}
 						onChange={this.handleOnChange}
-						style={{ color: "black" }}
 					></textarea>
 				</div>
-				<button onClick={this.handleSubmit}> Submit </button>
-				<button onClick={this.handleToggle}> Cancel </button>
+				<button className="forum-buttons" onClick={this.handleSubmit}>
+					Submit
+				</button>
+				<button className="forum-buttons" onClick={this.handleToggle}>
+					Cancel
+				</button>
 			</div>
 		);
 
@@ -96,7 +100,7 @@ class ForumContainer extends Component {
 		return (
 			<div>
 				{forumDisplay}
-				<div style={{marginTop:'20px'}}>
+				<div style={{ marginTop: "20px" }}>
 					{this.props.isLoggedIn
 						? this.state.toggle
 							? toggledView
