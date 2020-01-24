@@ -103,7 +103,7 @@ class ThreadContainer extends Component {
 							{this.props.currThread.title}
 						</p>
 						<p style={{ margin: 0, fontSize: "12px" }}>
-							Created by {this.props.currThread.user.name} on
+							Created by {this.props.currThread.user.name} on{" "}
 							{this.props.currThread.createdAt.slice(0, 10)}
 						</p>
 					</div>
